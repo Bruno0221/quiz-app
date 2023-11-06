@@ -5,11 +5,11 @@
   --clr-primary-300: #59b599;
   --clr-primary-200: #8cd4be;
 
-  --clr-accent-500: #9e1432;
-  --clr-accent-500: #c62b4c;
-  --clr-accent-400: #db4e6c;
-  --clr-accent-300: #ef7690;
-  --clr-accent-200: #f6a2b4;
+  --clr-accent-500: #ab7015;
+  --clr-accent-500: #d6942f;
+  --clr-accent-400: #edb154;
+  --clr-accent-300: #ffcc7e;
+  --clr-accent-200: #ffdda9;
 }
 
 body {
@@ -50,8 +50,7 @@ main {
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   border: none;
-  background-color: var(--clr-accent-400);
-  color: white;
+  background-color: #edb154;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
