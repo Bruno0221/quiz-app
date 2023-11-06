@@ -1,3 +1,17 @@
+:root {
+  --clr-primary-600: #005a5e;
+  --clr-primary-500: #017277;
+  --clr-primary-400: #017277;
+  --clr-primary-300: #259ba0;
+  --clr-primary-200: #47aeb3;
+
+  --clr-accent-500: #9b0400;
+  --clr-accent-500: #c50500;
+  --clr-accent-400: #ff0700;
+  --clr-accent-300: #ff3e39;
+  --clr-accent-200: #ff6763;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -64,10 +78,6 @@ main {
 
 .footer-nav {
   list-style: none;
-  /* display: grid;
-  place-items: center strech;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem; */
   display: flex;
   justify-content: space-evenly;
   padding: 0;
