@@ -1,15 +1,15 @@
 :root {
-  --clr-primary-600: #005a5e;
-  --clr-primary-500: #017277;
-  --clr-primary-400: #017277;
-  --clr-primary-300: #259ba0;
-  --clr-primary-200: #47aeb3;
+  --clr-primary-600: #0e7153;
+  --clr-primary-500: #1f8d6c;
+  --clr-primary-400: #389c7e;
+  --clr-primary-300: #59b599;
+  --clr-primary-200: #8cd4be;
 
-  --clr-accent-500: #9b0400;
-  --clr-accent-500: #c50500;
-  --clr-accent-400: #ff0700;
-  --clr-accent-300: #ff3e39;
-  --clr-accent-200: #ff6763;
+  --clr-accent-500: #9e1432;
+  --clr-accent-500: #c62b4c;
+  --clr-accent-400: #db4e6c;
+  --clr-accent-300: #ef7690;
+  --clr-accent-200: #f6a2b4;
 }
 
 body {
@@ -30,7 +30,6 @@ main {
 }
 
 .question-container {
-  border: 1px solid black;
   background-color: var(--clr-primary-300);
   padding: 1rem;
   margin-bottom: 2rem;
@@ -39,6 +38,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .question {
@@ -50,8 +50,9 @@ main {
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   border: none;
-  background-color: var(--clr-accent-200);
+  background-color: var(--clr-accent-400);
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .tags {
