@@ -11,6 +11,10 @@ main {
   padding: 2rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .question-container {
   border: 1px solid black;
   background-color: bisque;
@@ -18,7 +22,38 @@ main {
   margin-bottom: 2rem;
   border-radius: 10px;
   position: relative;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question {
+  text-align: center;
+}
+
+.answer-button {
+  max-width: 50%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background-color: aqua;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  align-self: start;
+  margin-top: 3rem;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.tag {
+  border: 1px solid black;
+  padding: 0.5rem;
+  background-color: grey;
+  border-radius: 5px;
 }
 
 .bookmark {
