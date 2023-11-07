@@ -115,5 +115,4 @@ main {
 .footer-links:focus,
 .footer-links:active {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  fill: aqua;
 }
