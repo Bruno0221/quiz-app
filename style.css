@@ -14,7 +14,8 @@
 
 body {
   box-sizing: border-box;
-  margin: 0;
+  max-width: 375px;
+  margin: 0 auto;
   background-color: var(--clr-primary-200);
   display: grid;
   place-items: center;
@@ -94,6 +95,10 @@ main {
   height: 2rem;
   aspect-ratio: 1;
   background: black;
+}
+
+.bookmarked-active {
+  background: var(--clr-accent-200);
 }
 
 .footer {
