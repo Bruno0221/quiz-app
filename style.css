@@ -89,6 +89,11 @@ main {
   position: absolute;
   top: -5px;
   right: 20px;
+  mask: url(/assets/bookmark-icon.svg);
+  mask-size: cover;
+  height: 2rem;
+  aspect-ratio: 1;
+  background: black;
 }
 
 .footer {
@@ -102,17 +107,34 @@ main {
   list-style: none;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 0;
   margin: 0;
 }
-
-.footer-links img {
-  height: 3rem;
-  margin: 1rem;
+.nav-icon-home {
+  mask: url(/assets/home-icon.svg);
+}
+.nav-icon-bookmark {
+  mask: url(/assets/bookmark-icon.svg);
+}
+.nav-icon-profile {
+  mask: url(/assets/user-icon.svg);
 }
 
-.footer-links:hover,
-.footer-links:focus,
-.footer-links:active {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.nav-icon {
+  width: 3.5rem;
+  aspect-ratio: 1;
+  background: black;
+  mask-size: cover;
+  margin-block: 1rem;
+}
+
+.nav-icon:hover,
+.bookmark:hover {
+  background: var(--clr-accent-200);
+  cursor: pointer;
+}
+
+.current-page {
+  background: var(--clr-accent-200);
 }

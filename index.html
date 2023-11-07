@@ -13,19 +13,15 @@
   </head>
   <body>
     <header aria-labelledby="title">
-      <h1 class="title" id="title">Quiz App</h1>
+      <h1 id="title" class="title" id="title">Quiz App</h1>
     </header>
     <main>
       <article
         class="question-container"
         aria-label="card containing a question"
       >
-        <a href="#">
-          <img
-            src="/assets/bookmark-icon.svg"
-            alt="Bookmark Icon"
-            class="bookmark"
-          />
+        <a href="#" aria-label="icon to bookmark question">
+          <div class="bookmark"></div>
         </a>
         <h2 class="question">What property flips the axes in flexbox?</h2>
         <button class="answer-button">Show Answer</button>
@@ -40,12 +36,8 @@
         class="question-container"
         aria-label="card containing a question"
       >
-        <a href="#">
-          <img
-            src="/assets/bookmark-icon.svg"
-            alt="Bookmark Icon"
-            class="bookmark"
-          />
+        <a href="#" aria-label="icon to bookmark question">
+          <div class="bookmark"></div>
         </a>
         <h2 class="question">
           What properties are used to center items in flexbox?
@@ -62,18 +54,18 @@
     <footer class="footer">
       <ul class="footer-nav">
         <li class="footer-links">
-          <a href="#" aria-label="Home Navigation Link">
-            <img src="/assets/home-icon.svg" alt="Home Icon" />
+          <a href="#title" aria-label="navigation link home">
+            <div class="nav-icon nav-icon-home current-page"></div>
           </a>
         </li>
         <li class="footer-links">
-          <a href="#" aria-label="Bookmark Navigation Link">
-            <img src="/assets/bookmark-icon.svg" alt="Bookmark Icon" />
+          <a href="#title" aria-label="navigation link bookmarks">
+            <div class="nav-icon nav-icon-bookmark"></div>
           </a>
         </li>
         <li class="footer-links">
-          <a href="#" aria-label="User Profile Navigation Link">
-            <img src="/assets/user-icon.svg" alt="User Icon" />
+          <a href="#title" aria-label="navigation link user profile">
+            <div class="nav-icon nav-icon-profile"></div>
           </a>
         </li>
       </ul>
