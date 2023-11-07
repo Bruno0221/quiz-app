@@ -1,3 +1,5 @@
+/* General Styling */
+
 :root {
   --clr-primary-600: rgba(0, 0, 0, 1);
   --clr-primary-500: rgba(3, 2, 2, 1);
@@ -27,13 +29,13 @@ main {
   padding: 2rem;
 }
 
+/* Header */
+
 .title {
   font-size: 3rem;
 }
 
-.hidden {
-  display: none;
-}
+/* Questions Page */
 
 .question-container {
   background-color: var(--clr-primary-300);
@@ -97,9 +99,28 @@ main {
   background: black;
 }
 
-.bookmarked-active {
-  background: var(--clr-accent-200);
+/* Profile Page */
+
+.profile-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
+
+.profile-img {
+  width: 20%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid white;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Footer */
 
 .footer {
   position: sticky;
@@ -140,6 +161,16 @@ main {
   cursor: pointer;
 }
 
+/* Utility Classes */
+
 .current-page {
   background: var(--clr-accent-200);
+}
+
+.bookmarked-active {
+  background: var(--clr-accent-200);
+}
+
+.hidden {
+  display: none;
 }
