@@ -1,28 +1,33 @@
 :root {
-  --clr-primary-600: #0e7153;
-  --clr-primary-500: #1f8d6c;
-  --clr-primary-400: #389c7e;
-  --clr-primary-300: #59b599;
-  --clr-primary-200: #8cd4be;
+  --clr-primary-600: rgba(0, 0, 0, 1);
+  --clr-primary-500: rgba(3, 2, 2, 1);
+  --clr-primary-400: rgba(64, 64, 64, 1);
+  --clr-primary-300: rgba(117, 117, 117, 0.8);
+  --clr-primary-200: rgba(166, 165, 165, 1);
 
-  --clr-accent-600: #ab7015;
-  --clr-accent-500: #d6942f;
-  --clr-accent-400: #edb154;
-  --clr-accent-300: #ffcc7e;
-  --clr-accent-200: #ffdda9;
+  --clr-accent-600: rgba(163, 159, 22, 1);
+  --clr-accent-500: rgba(122, 119, 0, 1);
+  --clr-accent-400: rgba(202, 198, 45, 1);
+  --clr-accent-300: rgba(223, 219, 84, 1);
+  --clr-accent-200: rgba(255, 252, 136, 1);
 }
 
 body {
   box-sizing: border-box;
   margin: 0;
-  background-color: var(--clr-primary-400);
+  background-color: var(--clr-primary-200);
   display: grid;
   place-items: center;
   color: black;
+  position: relative;
 }
 
 main {
   padding: 2rem;
+}
+
+.title {
+  font-size: 3rem;
 }
 
 .hidden {
@@ -46,24 +51,26 @@ main {
 }
 
 .answer-button {
-  max-width: 50%;
+  max-width: fit-content;
+  font-size: 1.5rem;
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   border: none;
-  background-color: var(--clr-accent-400);
+  background-color: var(--clr-accent-300);
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .answer-button:hover,
 .answer-button:focus,
 .answer-button:active {
-  background-color: var(--clr-accent-300);
+  background-color: var(--clr-accent-200);
   cursor: pointer;
 }
 
 .tags {
   list-style: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
   align-self: start;
   margin-top: 3rem;
@@ -72,10 +79,10 @@ main {
 }
 
 .tag {
-  border: 1px solid black;
   padding: 0.5rem;
-  background-color: var(--clr-primary-600);
+  background-color: var(--clr-primary-200);
   border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .bookmark {
@@ -90,9 +97,14 @@ main {
   justify-content: space-evenly;
   padding: 0;
   margin: 0;
+  /* position: fixed;
+  bottom: 0;
+  left: 0;
+  top: calc(100vh - 6rem);
+  height: 3rem; */
 }
 
 .footer-links img {
   height: 3rem;
-  padding: 2rem;
+  margin: 2rem;
 }
