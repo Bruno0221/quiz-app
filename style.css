@@ -91,20 +91,28 @@ main {
   right: 20px;
 }
 
+.footer {
+  position: sticky;
+  bottom: 0;
+  background-color: var(--clr-primary-200);
+  width: 100%;
+}
+
 .footer-nav {
   list-style: none;
   display: flex;
   justify-content: space-evenly;
   padding: 0;
   margin: 0;
-  /* position: fixed;
-  bottom: 0;
-  left: 0;
-  top: calc(100vh - 6rem);
-  height: 3rem; */
 }
 
 .footer-links img {
   height: 3rem;
-  margin: 2rem;
+  margin: 1rem;
+}
+
+.footer-links:hover,
+.footer-links:focus,
+.footer-links:active {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
