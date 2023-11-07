@@ -12,34 +12,46 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1 class="title">Quiz App</h1>
+    <header aria-labelledby="title">
+      <h1 class="title" id="title">Quiz App</h1>
     </header>
     <main>
-      <article class="question-container">
+      <article
+        class="question-container"
+        aria-label="card containing a question"
+      >
         <img
           src="/assets/bookmark-icon.svg"
           alt="Bookmark Icon"
           class="bookmark"
+          aria-label="Bookmark"
         />
         <h2 class="question">What property flips the axes in flexbox?</h2>
         <button class="answer-button">Show Answer</button>
         <p class="answer hidden"></p>
-        <ul class="tags">
+        <ul class="tags" aria-label="list of tags related to question">
           <li class="tag">#html</li>
           <li class="tag">#flexbox</li>
           <li class="tag">#css</li>
         </ul>
       </article>
-      <article class="question-container">
+      <article
+        class="question-container"
+        aria-label="card containing a question"
+      >
         <div class="bookmark">
-          <img src="/assets/bookmark-icon.svg" alt="Bookmark Icon" />
+          <img
+            src="/assets/bookmark-icon.svg"
+            alt="Bookmark Icon"
+            aria-label="Bookmark"
+          />
         </div>
         <h2 class="question">
           What properties are used to center items in flexbox?
         </h2>
         <button class="answer-button">Show Answer</button>
-        <ul class="tags">
+        <p class="answer hidden"></p>
+        <ul class="tags" aria-label="list of tags related to question">
           <li class="tag">#html</li>
           <li class="tag">#flexbox</li>
           <li class="tag">#css</li>
@@ -49,13 +61,25 @@
     <footer>
       <ul class="footer-nav">
         <li class="footer-links">
-          <img src="/assets/home-icon.svg" alt="Home Icon" />
+          <img
+            src="/assets/home-icon.svg"
+            alt="Home Icon"
+            aria-label="Home Navigation"
+          />
         </li>
         <li class="footer-links">
-          <img src="/assets/bookmark-icon.svg" alt="Bookmark Icon" />
+          <img
+            src="/assets/bookmark-icon.svg"
+            alt="Bookmark Icon"
+            aria-label="Bookmark Navigation"
+          />
         </li>
         <li class="footer-links">
-          <img src="/assets/user-icon.svg" alt="User Icon" />
+          <img
+            src="/assets/user-icon.svg"
+            alt="User Icon"
+            aria-label="User Profile Navigation"
+          />
         </li>
       </ul>
     </footer>
