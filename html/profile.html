@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link
+      rel="shortcut icon"
+      href="/assets/question icon.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header aria-labelledby="title">
+      <h1 id="title" class="title" id="title">Quiz App</h1>
+    </header>
+    <main>
+      <section class="profile-header">
+        <img src="/assets/profile-picture.jpg" alt="" class="profile-img" />
+        <p class="profile-name">Maxime Mustermensch</p>
+      </section>
+      <section class="profile-about">
+        <h2 class="about-header">About me</h2>
+        <p class="about-txt">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+          repudiandae delectus cupiditate reprehenderit placeat earum sed
+          pariatur facilis quasi voluptatum.
+        </p>
+        <div class="about-counter">
+          <div class="counter question-counter">
+            <img src="/assets/question icon.svg" alt="Question Counter" />
+            <span class="question-count">12</span>
+          </div>
+          <div class="counter bookmark-counter">
+            <img src="/assets/bookmark-icon.svg" alt="Bookmark Counter" />
+            <span class="bookmark-count">4</span>
+          </div>
+        </div>
+      </section>
+      <section class="profile-settings">
+        <h2 class="settings-header">Settings</h2>
+        <div class="setting-container"></div>
+          <label for="dark-mode"
+            >Dark Mode<input id="dark-mode" type="button" value="dark-mode"
+          /></label>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <ul class="footer-nav">
+        <li class="footer-links">
+          <a href="/index.html" aria-label="navigation link home">
+            <div class="nav-icon nav-icon-home"></div>
+          </a>
+        </li>
+        <li class="footer-links">
+          <a
+            href="/html/bookmarked.html"
+            aria-label="navigation link bookmarks"
+          >
+            <div class="nav-icon nav-icon-bookmark"></div>
+          </a>
+        </li>
+        <li class="footer-links">
+          <a href="#title" aria-label="navigation link user profile">
+            <div class="nav-icon nav-icon-profile current-page"></div>
+          </a>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>
