@@ -19,14 +19,18 @@ body {
   max-width: 375px;
   margin: 0 auto;
   background-color: var(--clr-primary-200);
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: black;
   position: relative;
+  min-height: 100vh;
 }
 
 main {
   padding: 2rem;
+  flex: 1;
 }
 
 /* Header */
