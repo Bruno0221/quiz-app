@@ -4,6 +4,16 @@
 
   --clr-accent-dark: rgba(223, 219, 84, 1);
   --clr-accent-light: rgba(255, 252, 136, 1);
+
+  --clr-black: #030202;
+  ---clr-white: #fff;
+}
+
+.dark-mode {
+  --clr-primary-dark: #404040;
+  --clr-primary-light: #030202;
+  --clr-black: white;
+  --clr-white: #030202;
 }
 
 body {
@@ -15,7 +25,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: var(--clr-black);
   position: relative;
   min-height: 100vh;
 }
