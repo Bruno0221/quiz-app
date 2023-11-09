@@ -29,7 +29,7 @@
 .nav-icon {
   width: 3.5rem;
   aspect-ratio: 1;
-  background: black;
+  background: var(--clr-black);
   mask-size: cover;
   margin-block: 1rem;
 }

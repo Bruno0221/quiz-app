@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--clr-black) 0px 3px 8px;
 }
 
 .question {
@@ -21,7 +21,7 @@
   border-radius: 50px;
   border: none;
   background-color: var(--clr-accent-dark);
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--clr-black) 1.95px 1.95px 2.6px;
 }
 
 .answer-button:hover,
@@ -46,7 +46,7 @@
   padding: 0.5rem;
   background-color: var(--clr-primary-light);
   border-radius: 5px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: var(--clr-black) 0px 2px 8px 0px;
 }
 
 .bookmark {
@@ -57,5 +57,5 @@
   mask-size: cover;
   height: 2rem;
   aspect-ratio: 1;
-  background: black;
+  background: var(--clr-black);
 }
