@@ -1,0 +1,26 @@
+:root {
+  --clr-primary-dark: rgba(117, 117, 117, 0.8);
+  --clr-primary-light: rgba(166, 165, 165, 1);
+
+  --clr-accent-dark: rgba(223, 219, 84, 1);
+  --clr-accent-light: rgba(255, 252, 136, 1);
+}
+
+body {
+  box-sizing: border-box;
+  max-width: 375px;
+  margin: 0 auto;
+  background-color: var(--clr-primary-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  position: relative;
+  min-height: 100vh;
+}
+
+main {
+  padding: 2rem;
+  flex: 1;
+}
