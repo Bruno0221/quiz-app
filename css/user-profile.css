@@ -1,0 +1,39 @@
+.profile-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile-img {
+  width: 20%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid white;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.about-counter {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter {
+  background-color: var(--clr-primary-light);
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.counter img {
+  height: 2rem;
+}

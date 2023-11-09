@@ -1,0 +1,11 @@
+.current-page {
+  background: var(--clr-accent-light);
+}
+
+.bookmarked-active {
+  background: var(--clr-accent-light);
+}
+
+.hidden {
+  display: none;
+}
