@@ -1,19 +1,27 @@
 :root {
-  --clr-primary-dark: rgba(117, 117, 117, 0.8);
-  --clr-primary-light: rgba(166, 165, 165, 1);
+  --clr-primary-dark: hsl(0, 0%, 80%);
+  --clr-primary-light: hsl(0, 0%, 98%);
 
-  --clr-accent-dark: rgba(223, 219, 84, 1);
-  --clr-accent-light: rgba(255, 252, 136, 1);
+  --clr-accent-dark: hsl(301, 61%, 65%);
+  --clr-accent-light: hsl(301, 61%, 50%);
 
-  --clr-black: #030202;
-  ---clr-white: #fff;
+  --clr-black: hsl(227, 7%, 25%);
+  ---clr-white: hsl(0, 0%, 100%);
+
+  --clr-box-shadow: hsl(227, 7%, 70%);
 }
 
 .dark-mode {
-  --clr-primary-dark: #404040;
-  --clr-primary-light: #030202;
-  --clr-black: white;
-  --clr-white: #030202;
+  --clr-primary-dark: hsl(217, 30%, 50%);
+  --clr-primary-light: hsl(217, 14%, 18%);
+
+  --clr-accent-dark: hsl(94, 39%, 80%);
+  --clr-accent-light: hsl(94, 39%, 60%);
+
+  --clr-black: hsl(220, 12%, 90%);
+  ---clr-white: hsl(217, 14%, 100%);
+
+  --clr-box-shadow: hsl(227, 7%, 30%);
 }
 
 body {
