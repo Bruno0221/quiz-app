@@ -1,23 +1,27 @@
 :root {
-  --clr-primary-dark: hsl(0, 0%, 98%);
-  --clr-primary-light hsl(0, 0%, 50%);
+  --clr-primary-dark: hsl(0, 0%, 80%);
+  --clr-primary-light: hsl(0, 0%, 98%);
 
-  --clr-accent-dark: hsl(301, 61%, 85%);
-  --clr-accent-light: hsl(301, 61%, 41%);
+  --clr-accent-dark: hsl(301, 61%, 65%);
+  --clr-accent-light: hsl(301, 61%, 50%);
 
   --clr-black: hsl(227, 7%, 25%);
   ---clr-white: hsl(0, 0%, 100%);
+
+  --clr-box-shadow: hsl(227, 7%, 70%);
 }
 
 .dark-mode {
   --clr-primary-dark: hsl(217, 30%, 50%);
---clr-primary-light: hsl(217, 14%, 18%);
+  --clr-primary-light: hsl(217, 14%, 18%);
 
---clr-accent-dark: hsl(94, 39%, 80%);
---clr-accent-light: hsl(94, 39%, 60%);
+  --clr-accent-dark: hsl(94, 39%, 80%);
+  --clr-accent-light: hsl(94, 39%, 60%);
 
---clr-black: hsl(220, 12%, 90%);
----clr-white: hsl(217, 14%, 100%);
+  --clr-black: hsl(220, 12%, 90%);
+  ---clr-white: hsl(217, 14%, 100%);
+
+  --clr-box-shadow: hsl(227, 7%, 30%);
 }
 
 body {
