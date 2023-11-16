@@ -34,8 +34,7 @@
   margin-block: 1rem;
 }
 
-.nav-icon:hover,
-.bookmark:hover {
+.nav-icon:hover {
   background: var(--clr-accent-light);
   cursor: pointer;
 }
