@@ -37,3 +37,34 @@
 .counter img {
   height: 2rem;
 }
+
+input[type="checkbox"].toggle {
+  opacity: 0;
+  position: absolute;
+  top: -9000px;
+  left: -9000px;
+}
+
+input[type="checkbox"].toggle + label {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"].toggle + label::before {
+  content: "";
+  width: 2em;
+  height: 1em;
+  background-color: var(--clr-primary-dark);
+  border-radius: 1em;
+  margin-right: 1em;
+}
+input[type="checkbox"].toggle + label::after {
+  position: absolute;
+  left: 0.1;
+  content: "";
+  width: 0.9em;
+  height: 0.9em;
+  background-color: var(--clr-primary-light);
+  border-radius: 1em;
+}
