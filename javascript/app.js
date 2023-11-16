@@ -1,10 +1,16 @@
+// Function to toggle classes -> put className in quotes.
+
+function toggleClass(element, className) {
+  element.classList.toggle(className);
+}
+
 // Dark Mode
 const button = document.querySelector("#dark-mode");
 const body = document.querySelector('[data-type="body"]');
 
 if (button) {
   button.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
+    toggleClass(body, "dark-mode");
   });
 }
 
@@ -13,8 +19,9 @@ const answerButton1 = document.querySelector("#show-answer-1");
 const answerButton2 = document.querySelector("#show-answer-2");
 
 function hideNextSibling(name) {
-  name.nextElementSibling.classList.toggle("hidden");
-  if (name.nextElementSibling.classList.contains("hidden")) {
+  const nextSibling = name.nextElementSibling;
+  toggleClass(nextSibling, "hidden");
+  if (nextSibling.classList.contains("hidden")) {
     name.textContent = "Show Answer";
   } else {
     name.textContent = "Hide Answer";
@@ -36,17 +43,13 @@ if (answerButton2) {
 const bookmark1 = document.querySelector("#bookmark-1");
 const bookmark2 = document.querySelector("#bookmark-2");
 
-function toggleBookmarks(name) {
-  name.classList.toggle("bookmarked-active");
-}
-
 if (bookmark1) {
   bookmark1.addEventListener("click", () => {
-    toggleBookmarks(bookmark1);
+    toggleClass(bookmark1, "bookmarked-active");
   });
 }
 if (bookmark2) {
   bookmark2.addEventListener("click", () => {
-    toggleBookmarks(bookmark2);
+    toggleClass(bookmark2, "bookmarked-active");
   });
 }
