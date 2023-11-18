@@ -40,10 +40,15 @@ if (answerButton2) {
 // Toggle Bookmarks
 const bookmark1 = document.querySelector("#bookmark-1");
 const bookmark2 = document.querySelector("#bookmark-2");
+const bookmarkCheckbox1 = document.querySelector("#bookmark-checkbox1");
 
 if (bookmark1) {
-  bookmark1.addEventListener("click", () => {
-    toggleClass(bookmark1, "bookmarked-active");
+  bookmarkCheckbox1.addEventListener("click", () => {
+    if (bookmarkCheckbox1.checked) {
+      bookmark1.classList.add("bookmarked-active");
+    } else {
+      bookmark1.classList.remove("bookmarked-active");
+    }
   });
 }
 

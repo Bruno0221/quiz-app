@@ -20,9 +20,22 @@
         class="question-container"
         aria-label="card containing a question"
       >
-        <a href="#" aria-label="icon to bookmark question">
-          <div id="bookmark-1" class="bookmark"></div>
-        </a>
+        <label for="bookmark-checkbox1">
+             <svg
+             id="bookmark-1"
+              class="bookmark"
+              aria-label="Bokkmark Icon"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+                         >
+                        <title>bookmark</title>
+                        <path
+                        d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
+                        ></path>
+          </label>
+          <input class="hidden-off-screen" type="checkbox" name="bookmark" id="bookmark-checkbox1">
+
         <h2 class="question">What property flips the axes in flexbox?</h2>
         <button id="show-answer-1" class="answer-button">Show Answer</button>
         <p id="answer-1" class="answer hidden" aria-hidden="true">

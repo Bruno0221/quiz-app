@@ -51,11 +51,14 @@
 
 .bookmark {
   position: absolute;
-  top: -5px;
-  right: 20px;
-  mask: url(/assets/bookmark-icon.svg);
-  mask-size: cover;
+  top: -0.5rem;
+  right: 1rem;
   height: 2rem;
   aspect-ratio: 1;
-  background: var(--clr-black);
+}
+
+.hidden-off-screen {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
 }
