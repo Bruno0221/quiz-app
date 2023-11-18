@@ -5,10 +5,9 @@ const toggleClass = (element, className) => element.classList.toggle(className);
 // Dark Mode
 const button = document.querySelector("#dark-mode");
 const body = document.querySelector('[data-type="body"]');
-
 if (button) {
   button.addEventListener("click", () => {
-    toggleClass(body, "dark-mode");
+    toggleClass(body, "other-theme");
   });
 }
 
