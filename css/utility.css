@@ -5,3 +5,14 @@
 .hidden {
   display: none;
 }
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
