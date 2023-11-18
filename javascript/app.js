@@ -18,6 +18,7 @@ const answerButton2 = document.querySelector("#show-answer-2");
 function hideNextSibling(name) {
   const nextSibling = name.nextElementSibling;
   toggleClass(nextSibling, "hidden");
+  toggleClass(nextSibling, "answer-appear");
   if (nextSibling.classList.contains("hidden")) {
     name.textContent = "Show Answer";
   } else {

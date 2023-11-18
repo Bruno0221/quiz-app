@@ -24,6 +24,13 @@
   box-shadow: var(--clr-box-shadow) 1.95px 1.95px 2.6px;
 }
 
+.answer {
+  font-size: 1.5rem;
+}
+.answer-appear {
+  animation: appear 250ms forwards;
+}
+
 .answer-button:hover,
 .answer-button:focus,
 .answer-button:active {
