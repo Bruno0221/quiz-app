@@ -1,8 +1,6 @@
 // Function to toggle classes -> put className in quotes.
 
-function toggleClass(element, className) {
-  element.classList.toggle(className);
-}
+const toggleClass = (element, className) => element.classList.toggle(className);
 
 // Dark Mode
 const button = document.querySelector("#dark-mode");
@@ -48,6 +46,7 @@ if (bookmark1) {
     toggleClass(bookmark1, "bookmarked-active");
   });
 }
+
 if (bookmark2) {
   bookmark2.addEventListener("click", () => {
     toggleClass(bookmark2, "bookmarked-active");
