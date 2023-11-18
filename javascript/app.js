@@ -41,6 +41,7 @@ if (answerButton2) {
 const bookmark1 = document.querySelector("#bookmark-1");
 const bookmark2 = document.querySelector("#bookmark-2");
 const bookmarkCheckbox1 = document.querySelector("#bookmark-checkbox1");
+const bookmarkCheckbox2 = document.querySelector("#bookmark-checkbox2");
 
 if (bookmark1) {
   bookmarkCheckbox1.addEventListener("click", () => {
@@ -53,7 +54,26 @@ if (bookmark1) {
 }
 
 if (bookmark2) {
-  bookmark2.addEventListener("click", () => {
-    toggleClass(bookmark2, "bookmarked-active");
+  bookmarkCheckbox2.addEventListener("click", () => {
+    if (bookmarkCheckbox2.checked) {
+      bookmark2.classList.add("bookmarked-active");
+    } else {
+      bookmark2.classList.remove("bookmarked-active");
+    }
   });
 }
+
+function checkIfBookmarked() {
+  if (bookmarkCheckbox1.checked) {
+    bookmark1.classList.add("bookmarked-active");
+  } else {
+    bookmark1.classList.remove("bookmarked-active");
+  }
+
+  if (bookmarkCheckbox2.checked) {
+    bookmark2.classList.add("bookmarked-active");
+  } else {
+    bookmark2.classList.remove("bookmarked-active");
+  }
+}
+checkIfBookmarked();

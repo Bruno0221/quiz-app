@@ -56,9 +56,3 @@
   height: 2rem;
   aspect-ratio: 1;
 }
-
-.hidden-off-screen {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-}
