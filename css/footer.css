@@ -14,27 +14,14 @@
   margin: 0;
 }
 
-.nav-icon-home {
-  mask: url(/assets/home-icon.svg);
-}
-
-.nav-icon-bookmark {
-  mask: url(/assets/bookmark-icon.svg);
-}
-
-.nav-icon-profile {
-  mask: url(/assets/user-icon.svg);
-}
-
 .nav-icon {
-  width: 3.5rem;
-  aspect-ratio: 1;
-  background: var(--clr-black);
-  mask-size: cover;
   margin-block: 1rem;
+  height: 3.5rem;
+  aspect-ratio: 1;
+  fill: var(--clr-black);
 }
 
 .nav-icon:hover {
-  background: var(--clr-accent-light);
+  fill: var(--clr-accent-light);
   cursor: pointer;
 }
