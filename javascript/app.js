@@ -45,35 +45,26 @@ const bookmarkCheckbox2 = document.querySelector("#bookmark-checkbox2");
 
 if (bookmark1) {
   bookmarkCheckbox1.addEventListener("click", () => {
-    if (bookmarkCheckbox1.checked) {
-      bookmark1.classList.add("bookmarked-active");
-    } else {
-      bookmark1.classList.remove("bookmarked-active");
-    }
+    addBackgroundToCheckboxIcons(bookmarkCheckbox1, bookmark1);
   });
 }
 
 if (bookmark2) {
   bookmarkCheckbox2.addEventListener("click", () => {
-    if (bookmarkCheckbox2.checked) {
-      bookmark2.classList.add("bookmarked-active");
-    } else {
-      bookmark2.classList.remove("bookmarked-active");
-    }
+    addBackgroundToCheckboxIcons(bookmarkCheckbox2, bookmark2);
   });
 }
 
-function checkIfBookmarked() {
-  if (bookmarkCheckbox1.checked) {
-    bookmark1.classList.add("bookmarked-active");
+function addBackgroundToCheckboxIcons(checkbox, icon) {
+  if (checkbox.checked) {
+    icon.classList.add("bookmarked-active");
   } else {
-    bookmark1.classList.remove("bookmarked-active");
+    icon.classList.remove("bookmarked-active");
   }
+}
 
-  if (bookmarkCheckbox2.checked) {
-    bookmark2.classList.add("bookmarked-active");
-  } else {
-    bookmark2.classList.remove("bookmarked-active");
-  }
+function checkIfBookmarked() {
+  addBackgroundToCheckboxIcons(bookmarkCheckbox1, bookmark1);
+  addBackgroundToCheckboxIcons(bookmarkCheckbox2, bookmark2);
 }
 checkIfBookmarked();
