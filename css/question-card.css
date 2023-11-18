@@ -57,6 +57,10 @@
   aspect-ratio: 1;
 }
 
+.bookmark-checkbox:checked + label {
+  fill: var(--clr-accent-light);
+}
+
 .bookmark:hover {
   cursor: pointer;
 }

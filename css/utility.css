@@ -2,10 +2,6 @@
   fill: var(--clr-accent-light);
 }
 
-.bookmarked-active {
-  fill: var(--clr-accent-light);
-}
-
 .hidden {
   display: none;
 }

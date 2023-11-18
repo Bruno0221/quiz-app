@@ -36,35 +36,3 @@ if (answerButton2) {
     hideNextSibling(answerButton2);
   });
 }
-
-// Toggle Bookmarks
-const bookmark1 = document.querySelector("#bookmark-1");
-const bookmark2 = document.querySelector("#bookmark-2");
-const bookmarkCheckbox1 = document.querySelector("#bookmark-checkbox1");
-const bookmarkCheckbox2 = document.querySelector("#bookmark-checkbox2");
-
-if (bookmark1) {
-  bookmarkCheckbox1.addEventListener("click", () => {
-    addColorToCheckedIcons(bookmarkCheckbox1, bookmark1);
-  });
-}
-
-if (bookmark2) {
-  bookmarkCheckbox2.addEventListener("click", () => {
-    addColorToCheckedIcons(bookmarkCheckbox2, bookmark2);
-  });
-}
-
-function addColorToCheckedIcons(checkbox, icon) {
-  if (checkbox.checked) {
-    icon.classList.add("bookmarked-active");
-  } else {
-    icon.classList.remove("bookmarked-active");
-  }
-}
-
-function checkIfBookmarked() {
-  addColorToCheckedIcons(bookmarkCheckbox1, bookmark1);
-  addColorToCheckedIcons(bookmarkCheckbox2, bookmark2);
-}
-checkIfBookmarked();
