@@ -45,17 +45,17 @@ const bookmarkCheckbox2 = document.querySelector("#bookmark-checkbox2");
 
 if (bookmark1) {
   bookmarkCheckbox1.addEventListener("click", () => {
-    addBackgroundToCheckboxIcons(bookmarkCheckbox1, bookmark1);
+    addColorToCheckedIcons(bookmarkCheckbox1, bookmark1);
   });
 }
 
 if (bookmark2) {
   bookmarkCheckbox2.addEventListener("click", () => {
-    addBackgroundToCheckboxIcons(bookmarkCheckbox2, bookmark2);
+    addColorToCheckedIcons(bookmarkCheckbox2, bookmark2);
   });
 }
 
-function addBackgroundToCheckboxIcons(checkbox, icon) {
+function addColorToCheckedIcons(checkbox, icon) {
   if (checkbox.checked) {
     icon.classList.add("bookmarked-active");
   } else {
@@ -64,7 +64,7 @@ function addBackgroundToCheckboxIcons(checkbox, icon) {
 }
 
 function checkIfBookmarked() {
-  addBackgroundToCheckboxIcons(bookmarkCheckbox1, bookmark1);
-  addBackgroundToCheckboxIcons(bookmarkCheckbox2, bookmark2);
+  addColorToCheckedIcons(bookmarkCheckbox1, bookmark1);
+  addColorToCheckedIcons(bookmarkCheckbox2, bookmark2);
 }
 checkIfBookmarked();
