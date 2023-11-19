@@ -32,7 +32,6 @@
 }
 
 .answer-button:hover,
-.answer-button:focus,
 .answer-button:active {
   background-color: var(--clr-accent-light);
   cursor: pointer;
