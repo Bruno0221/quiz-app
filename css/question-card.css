@@ -26,13 +26,16 @@
 
 .answer {
   font-size: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid black;
+  margin-bottom: 0;
 }
 .answer-appear {
   animation: appear 250ms forwards;
 }
 
 .answer-button:hover,
-.answer-button:focus,
 .answer-button:active {
   background-color: var(--clr-accent-light);
   cursor: pointer;
