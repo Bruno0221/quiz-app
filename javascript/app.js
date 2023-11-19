@@ -12,8 +12,7 @@ if (button) {
 }
 
 // Show Answers
-const answerButton1 = document.querySelector("#show-answer-1");
-const answerButton2 = document.querySelector("#show-answer-2");
+const answerButtons = document.querySelectorAll(".answer-button");
 
 function hideNextSibling(name) {
   const nextSibling = name.nextElementSibling;
@@ -29,13 +28,8 @@ function hideNextSibling(name) {
   }
 }
 
-if (answerButton1) {
-  answerButton1.addEventListener("click", () => {
-    hideNextSibling(answerButton1);
+answerButtons.forEach(function (button) {
+  button.addEventListener("click", () => {
+    hideNextSibling(button);
   });
-}
-if (answerButton2) {
-  answerButton2.addEventListener("click", () => {
-    hideNextSibling(answerButton2);
-  });
-}
+});
