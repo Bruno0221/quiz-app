@@ -1,5 +1,5 @@
 .footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   background-color: var(--clr-primary-light);
   width: 100%;
