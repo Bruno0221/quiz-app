@@ -1,18 +1,16 @@
-.current-page {
-  position: relative;
+.current-page > a > svg {
   fill: var(--clr-accent-light);
 }
 
-.current-page::after {
+.current-page > a::after {
   content: "";
   position: absolute;
-  bottom: 100px;
+  bottom: 0;
   left: 50%;
   width: 5rem;
   height: 2.5rem;
   background-color: red;
   filter: blur(1rem);
-  z-index: -100;
 }
 
 .hidden {
