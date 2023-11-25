@@ -11,9 +11,38 @@ if (button) {
   });
 }
 
-// create Question Card
+// Questions
+const questionArray = [
+  {
+    question: "What property flips the axes in flexbox?",
+    answer: "flex-direction",
+    tags: ["html", "flexbox", "css"],
+  },
+  {
+    question: "What properties are used to center items in flexbox?",
+    answer: "justify-content & align items ",
+    tags: ["html", "flexbox", "css"],
+  },
+  {
+    question: "What properties are used to center items in grid?",
+    answer: "place-items: center:",
+    tags: ["html", "grid", "css"],
+  },
+  {
+    question: "What is one way to center items without flex or grid",
+    answer: "margin: 0 auto;",
+    tags: ["html", "css", "centering"],
+  },
+];
 
-function createCard() {
+// create Question Card
+function createCard(object) {
+  const cardQuestion = object.question;
+  const cardAnswer = object.answer;
+  const cardTag1 = object.tags[0];
+  const cardTag2 = object.tags[1];
+  const cardTag3 = object.tags[2];
+
   const main = document.querySelector("main");
   const newCard = document.createElement("article");
   newCard.innerHTML = `
@@ -21,7 +50,7 @@ function createCard() {
       class="question-container"
       aria-label="card containing a question"
       >
-      <input class="hidden bookmark-checkbox" type="checkbox" name="bookmark" id="bookmark-checkbox1">
+      <input class="hidden bookmark-checkbox" type="checkbox" name="bookmark">
       <label for="bookmark-checkbox1">
           <svg
             class="bookmark"
@@ -35,25 +64,37 @@ function createCard() {
                       d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
                       ></path>
       </label>
-      <h2 class="question">What property flips the axes in flexbox?</h2>
+      <h2 class="question">${cardQuestion}</h2>
       <button class="answer-button">Show Answer</button>
       <p class="answer hidden" aria-hidden="true">
-        flex-direction
+        ${cardAnswer}
       </p>
-      <ul class="tags" aria-label="question tag">
-        <li class="tag">#html</li>
-        <li class="tag">#flexbox</li>
-        <li class="tag">#css</li>
+      <ul class="tags" aria-label="question tag" data-js="tags">
+        <li class="tag">#${cardTag1}</li>
+        <li class="tag">#${cardTag2}</li>
+        <li class="tag">#${cardTag3}</li>
       </ul>
     </article>
-  `;
+    `;
 
   main.appendChild(newCard);
+  object.tags.forEach((tag) => {
+    newTag(tag);
+  });
 }
 
-createCard();
-createCard();
-createCard();
+// Create Tags
+
+function newTag() {
+  const parent = document.querySelector('[data-js="tags"]');
+  const newTag = document.createElement("li");
+  newTag.classList.add("tag");
+  parent.appendChild(newTag);
+}
+
+questionArray.forEach((question) => {
+  createCard(question);
+});
 
 // Show Answers
 const answerButtons = document.querySelectorAll(".answer-button");
