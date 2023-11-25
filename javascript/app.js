@@ -78,9 +78,9 @@ function createCard(object) {
     `;
 
   main.appendChild(newCard);
-  object.tags.forEach((tag) => {
-    newTag(tag);
-  });
+  // object.tags.forEach((tag) => {
+  //   newTag(tag);
+  // });
 }
 
 // Create Tags
@@ -92,9 +92,17 @@ function newTag() {
   parent.appendChild(newTag);
 }
 
-questionArray.forEach((question) => {
-  createCard(question);
-});
+// Start Game
+const startButton = document.querySelector('[data-js="start-button"]');
+
+if (startButton) {
+  startButton.addEventListener("click", () => {
+    startButton.classList.add("hidden");
+    questionArray.forEach((question) => {
+      createCard(question);
+    });
+  });
+}
 
 // Show Answers
 const answerButtons = document.querySelectorAll(".answer-button");
