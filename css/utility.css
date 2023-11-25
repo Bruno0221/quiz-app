@@ -1,18 +1,23 @@
-.current-page {
+.footer-links a {
   position: relative;
+}
+
+.current-page > svg {
   fill: var(--clr-accent-light);
 }
 
-.current-page::after {
+.current-page:after {
   content: "";
   position: absolute;
-  bottom: 100px;
+  bottom: 0;
   left: 50%;
-  width: 5rem;
-  height: 2.5rem;
-  background-color: red;
+  width: 3rem;
+  height: 1.5rem;
+  background-color: var(--clr-accent-light);
   filter: blur(1rem);
-  z-index: -100;
+  opacity: 0.3;
+  translate: -50% -50%;
+  z-index: -1;
 }
 
 .hidden {
