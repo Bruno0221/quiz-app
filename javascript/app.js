@@ -36,12 +36,12 @@ const questionArray = [
 ];
 
 // create Question Card
-function createCard(object) {
-  const cardQuestion = object.question;
-  const cardAnswer = object.answer;
-  const cardTag1 = object.tags[0];
-  const cardTag2 = object.tags[1];
-  const cardTag3 = object.tags[2];
+function createCard(singleCard) {
+  const cardQuestion = singleCard.question;
+  const cardAnswer = singleCard.answer;
+  const cardTag1 = singleCard.tags[0];
+  const cardTag2 = singleCard.tags[1];
+  const cardTag3 = singleCard.tags[2];
 
   const main = document.querySelector("main");
   const newCard = document.createElement("article");
@@ -77,15 +77,19 @@ function createCard(object) {
     </article>
     `;
 
+  singleCard.tags.forEach(createNewTag);
   main.appendChild(newCard);
+  // for (const tag of singleCard.tags) {
+  //   createNewTag(tag);
+  // }
 }
 
 // Create Tags
-function newTag() {
+function createNewTag(tag) {
   const parent = document.querySelector('[data-js="tags"]');
   const newTag = document.createElement("li");
   newTag.classList.add("tag");
-
+  newTag.textContent = tag;
   parent.appendChild(newTag);
 }
 
@@ -93,9 +97,7 @@ function newTag() {
 const indexMain = document.querySelector('[data-js="index-main"]');
 
 if (indexMain) {
-  questionArray.forEach((question) => {
-    createCard(question);
-  });
+  questionArray.forEach(createCard);
 }
 
 // Show Answers
