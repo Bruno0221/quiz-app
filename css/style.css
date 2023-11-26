@@ -20,6 +20,6 @@
   background-color: var(--clr-accent-light);
   filter: blur(1rem);
   opacity: 0.5;
-  translate: -50%;
+  translate: -50% 20%;
   z-index: -1;
 }

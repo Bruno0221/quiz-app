@@ -65,7 +65,7 @@ function createCard(object) {
                       ></path>
       </label>
       <h2 class="question">${cardQuestion}</h2>
-      <button class="answer-button">Show Answer</button>
+      <button class="answer-button" data-js="answer-buttons">Show Answer</button>
       <p class="answer hidden" aria-hidden="true">
         ${cardAnswer}
       </p>
@@ -92,20 +92,16 @@ function newTag() {
   parent.appendChild(newTag);
 }
 
-// Start Game
-const startButton = document.querySelector('[data-js="start-button"]');
+// Only create Card on index.html
+const indexMain = document.querySelector('[data-js="index-main"]');
 
-if (startButton) {
-  startButton.addEventListener("click", () => {
-    startButton.classList.add("hidden");
-    questionArray.forEach((question) => {
-      createCard(question);
-    });
+if (indexMain) {
+  questionArray.forEach((question) => {
+    createCard(question);
   });
 }
-
 // Show Answers
-const answerButtons = document.querySelectorAll(".answer-button");
+const answerButtons = document.querySelectorAll('[data-js="answer-buttons"]');
 
 function hideNextSibling(name) {
   const nextSibling = name.nextElementSibling;
@@ -126,3 +122,5 @@ answerButtons.forEach(function (button) {
     hideNextSibling(button);
   });
 });
+
+console.log(answerButtons);
