@@ -4,7 +4,7 @@ const toggleClass = (element, className) => element.classList.toggle(className);
 
 // Dark Mode
 const button = document.querySelector("#dark-mode");
-const body = document.querySelector('[data-type="body"]');
+const body = document.querySelector('[data-js="body"]');
 if (button) {
   button.addEventListener("click", () => {
     toggleClass(body, "other-theme");
@@ -78,17 +78,14 @@ function createCard(object) {
     `;
 
   main.appendChild(newCard);
-  // object.tags.forEach((tag) => {
-  //   newTag(tag);
-  // });
 }
 
 // Create Tags
-
 function newTag() {
   const parent = document.querySelector('[data-js="tags"]');
   const newTag = document.createElement("li");
   newTag.classList.add("tag");
+
   parent.appendChild(newTag);
 }
 
@@ -100,6 +97,7 @@ if (indexMain) {
     createCard(question);
   });
 }
+
 // Show Answers
 const answerButtons = document.querySelectorAll('[data-js="answer-buttons"]');
 
@@ -117,10 +115,8 @@ function hideNextSibling(name) {
   }
 }
 
-answerButtons.forEach(function (button) {
+answerButtons.forEach((button) => {
   button.addEventListener("click", () => {
     hideNextSibling(button);
   });
 });
-
-console.log(answerButtons);
