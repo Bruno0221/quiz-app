@@ -98,7 +98,7 @@ function createNewTag(tag) {
   parent.appendChild(newTag);
 }
 
-// Only create Card on index.html
+// Create Card on index.html
 const indexMain = document.querySelector('[data-js="index-main"]');
 const bookmarkedMain = document.querySelector('[data-js="bookmarked-main"]');
 
@@ -110,31 +110,21 @@ if (indexMain) {
 const bookmarkCheckbox = document.querySelectorAll(
   '[data-js="bookmark-checkboxes"]'
 );
-const bookmarkedQuestions = document.querySelector('[data-js="questions"]');
-const bookmarkedAnswers = document.querySelector('[data-js="answers"]');
-const bookmarkedTags = document.querySelector('[data-js="tags"]');
-const bookmarkedQuestionsArray = [
-  {
-    id: 1,
-    question: "What property flips the axes in flexbox?",
-    answer: "flex-direction",
-    tags: ["html", "flexbox", "css"],
-  },
-];
+const bookmarkedQuestionsArray = [];
 
 function addNewBookmarkToArray(event) {
   if (event.target.checked === true) {
+    const eventParent = event.target.parentElement;
     const newBookmarkedQuestion = {
-      question: event.target.nextElementSibling.nextElementSibling.textContent,
-      answer:
-        event.target.nextElementSibling.nextElementSibling.nextElementSibling
-          .nextElementSibling.textContent,
-      tags: bookmarkedTags.textContent,
+      question: eventParent.children[2].textContent,
+      answer: eventParent.children[4].textContent,
+      tags: eventParent.children[5].textContent,
     };
     bookmarkedQuestionsArray.push(newBookmarkedQuestion);
   } else {
     bookmarkedQuestionsArray.pop();
   }
+  console.log(bookmarkedQuestionsArray);
 }
 
 bookmarkCheckbox.forEach((event) => {
