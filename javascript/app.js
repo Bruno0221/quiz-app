@@ -77,7 +77,7 @@ function createCard(singleCard) {
     </article>
     `;
 
-  singleCard.tags.forEach(createNewTag);
+  // singleCard.tags.forEach(createNewTag);
   main.appendChild(newCard);
   // for (const tag of singleCard.tags) {
   //   createNewTag(tag);
