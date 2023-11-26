@@ -6,4 +6,20 @@
 
 .title {
   font-size: 3rem;
+  color: var(--clr-accent-dark);
+  position: relative;
+}
+
+.title:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: 1.5rem;
+  background-color: var(--clr-accent-light);
+  filter: blur(1rem);
+  opacity: 0.5;
+  translate: -50% 20%;
+  z-index: -1;
 }
