@@ -116,15 +116,17 @@ function addNewBookmarkToArray(event) {
   if (event.target.checked === true) {
     const eventParent = event.target.parentElement;
     const newBookmarkedQuestion = {
+      index: bookmarkedQuestionsArray.length,
       question: eventParent.children[2].textContent,
       answer: eventParent.children[4].textContent,
       tags: eventParent.children[5].textContent,
     };
     bookmarkedQuestionsArray.push(newBookmarkedQuestion);
+    console.log(event.target);
+    return newBookmarkedQuestion;
   } else {
-    bookmarkedQuestionsArray.pop();
+    bookmarkedQuestionsArray.splice(1, 1);
   }
-  console.log(bookmarkedQuestionsArray);
 }
 
 bookmarkCheckbox.forEach((event) => {
