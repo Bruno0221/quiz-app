@@ -14,21 +14,25 @@ if (button) {
 // Questions
 const questionArray = [
   {
+    id: 1,
     question: "What property flips the axes in flexbox?",
     answer: "flex-direction",
     tags: ["html", "flexbox", "css"],
   },
   {
+    id: 2,
     question: "What properties are used to center items in flexbox?",
     answer: "justify-content & align items ",
     tags: ["html", "flexbox", "css"],
   },
   {
+    id: 3,
     question: "What properties are used to center items in grid?",
     answer: "place-items: center:",
     tags: ["html", "grid", "css"],
   },
   {
+    id: 4,
     question: "What is one way to center items without flex or grid",
     answer: "margin: 0 auto;",
     tags: ["html", "css", "centering"],
@@ -39,6 +43,7 @@ const questionArray = [
 function createCard(singleCard) {
   const cardQuestion = singleCard.question;
   const cardAnswer = singleCard.answer;
+  const cardID = singleCard.id;
   const cardTag1 = singleCard.tags[0];
   const cardTag2 = singleCard.tags[1];
   const cardTag3 = singleCard.tags[2];
@@ -50,8 +55,8 @@ function createCard(singleCard) {
       class="question-container"
       aria-label="card containing a question"
       >
-      <input class="hidden bookmark-checkbox" type="checkbox" name="bookmark">
-      <label for="bookmark-checkbox1">
+      <input class="hidden bookmark-checkbox" type="checkbox" id="bookmark-checkbox${cardID}">
+      <label for="bookmark-checkbox${cardID}">
           <svg
             class="bookmark"
             aria-label=" Clickable Bookmark Icon"
