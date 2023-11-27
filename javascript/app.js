@@ -14,21 +14,25 @@ if (button) {
 // Questions
 const questionArray = [
   {
+    id: 1,
     question: "What property flips the axes in flexbox?",
     answer: "flex-direction",
     tags: ["html", "flexbox", "css"],
   },
   {
+    id: 2,
     question: "What properties are used to center items in flexbox?",
     answer: "justify-content & align items ",
     tags: ["html", "flexbox", "css"],
   },
   {
+    id: 3,
     question: "What properties are used to center items in grid?",
     answer: "place-items: center:",
     tags: ["html", "grid", "css"],
   },
   {
+    id: 4,
     question: "What is one way to center items without flex or grid",
     answer: "margin: 0 auto;",
     tags: ["html", "css", "centering"],
@@ -36,12 +40,13 @@ const questionArray = [
 ];
 
 // create Question Card
-function createCard(object) {
-  const cardQuestion = object.question;
-  const cardAnswer = object.answer;
-  const cardTag1 = object.tags[0];
-  const cardTag2 = object.tags[1];
-  const cardTag3 = object.tags[2];
+function createCard(singleCard) {
+  const cardQuestion = singleCard.question;
+  const cardAnswer = singleCard.answer;
+  const cardID = questionArray.indexOf(singleCard);
+  const cardTag1 = singleCard.tags[0];
+  const cardTag2 = singleCard.tags[1];
+  const cardTag3 = singleCard.tags[2];
 
   const main = document.querySelector("main");
   const newCard = document.createElement("article");
@@ -50,8 +55,8 @@ function createCard(object) {
       class="question-container"
       aria-label="card containing a question"
       >
-      <input class="hidden bookmark-checkbox" type="checkbox" name="bookmark">
-      <label for="bookmark-checkbox1">
+      <input class="hidden bookmark-checkbox" type="checkbox" id="bookmark-checkbox${cardID}" data-js="bookmark-checkboxes">
+      <label for="bookmark-checkbox${cardID}">
           <svg
             class="bookmark"
             aria-label=" Clickable Bookmark Icon"
@@ -64,38 +69,79 @@ function createCard(object) {
                       d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
                       ></path>
       </label>
-      <h2 class="question">${cardQuestion}</h2>
+      <h2 class="question" data-js="questions">${cardQuestion}</h2>
       <button class="answer-button" data-js="answer-buttons">Show Answer</button>
-      <p class="answer hidden" aria-hidden="true">
+      <p class="answer hidden" aria-hidden="true" data-js="answers">
         ${cardAnswer}
       </p>
       <ul class="tags" aria-label="question tag" data-js="tags">
-        <li class="tag">#${cardTag1}</li>
-        <li class="tag">#${cardTag2}</li>
-        <li class="tag">#${cardTag3}</li>
+        <li class="tag" data-js="tags">#${cardTag1}</li>
+        <li class="tag" data-js="tags">#${cardTag2}</li>
+        <li class="tag" data-js="tags">#${cardTag3}</li>
       </ul>
     </article>
     `;
 
   main.appendChild(newCard);
+  // hiermit möchte ich die tags aus jedem object als li an die zugehörige karte hängen. Es werden aber alle Tags an die erste Karte gehangen
+  singleCard.tags.forEach(createNewTag);
 }
 
 // Create Tags
-function newTag() {
+function createNewTag(tag) {
+  // wenn ich mit parent  auf "main" verweise, werden die Tags den Karten richtig zugeordnet, aber natürlich ans falsche Element gehangen
   const parent = document.querySelector('[data-js="tags"]');
   const newTag = document.createElement("li");
   newTag.classList.add("tag");
-
+  newTag.textContent = tag;
   parent.appendChild(newTag);
 }
 
-// Only create Card on index.html
+// Create Card on index.html
 const indexMain = document.querySelector('[data-js="index-main"]');
+const bookmarkedMain = document.querySelector('[data-js="bookmarked-main"]');
 
 if (indexMain) {
-  questionArray.forEach((question) => {
-    createCard(question);
-  });
+  questionArray.forEach(createCard);
+}
+
+//when bookmark is checked, move to local storage
+// const bookmarkCheckbox = document.querySelectorAll(
+//   '[data-js="bookmark-checkboxes"]'
+// );
+// const bookmarkedQuestionsArray = [];
+
+// function addNewBookmarkToArray(event) {
+//   if (event.target.checked === true) {
+//     const eventParent = event.target.parentElement;
+//     const newBookmarkedQuestion = {
+//       index: bookmarkedQuestionsArray.length,
+//       question: eventParent.children[2].textContent,
+//       answer: eventParent.children[4].textContent,
+//       tags: eventParent.children[5].textContent,
+//     };
+//     bookmarkedQuestionsArray.push(newBookmarkedQuestion);
+//     console.log(event.target);
+//     return newBookmarkedQuestion;
+//   } else {
+//     bookmarkedQuestionsArray.splice(1, 1);
+//   }
+// }
+
+// bookmarkCheckbox.forEach((event) => {
+//   event.addEventListener("click", (event) => {
+//     addNewBookmarkToArray(event);
+//     console.log(bookmarkedQuestionsArray);
+//     localStorage.setItem(
+//       bookmarkedQuestionsArray,
+//       JSON.stringify(bookmarkedQuestionsArray)
+//     );
+//   });
+// });
+
+// create bookmarked questions
+if (bookmarkedMain) {
+  bookmarkedQuestionsArray.forEach(createCard);
 }
 
 // Show Answers
