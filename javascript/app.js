@@ -82,15 +82,14 @@ function createCard(singleCard) {
     </article>
     `;
 
-  // singleCard.tags.forEach(createNewTag);
   main.appendChild(newCard);
-  // for (const tag of singleCard.tags) {
-  //   createNewTag(tag);
-  // }
+  // hiermit möchte ich die tags aus jedem object als li an die zugehörige karte hängen. Es werden aber alle Tags an die erste Karte gehangen
+  singleCard.tags.forEach(createNewTag);
 }
 
 // Create Tags
 function createNewTag(tag) {
+  // wenn ich mit parent  auf "main" verweise, werden die Tags den Karten richtig zugeordnet, aber natürlich ans falsche Element gehangen
   const parent = document.querySelector('[data-js="tags"]');
   const newTag = document.createElement("li");
   newTag.classList.add("tag");
@@ -107,38 +106,38 @@ if (indexMain) {
 }
 
 //when bookmark is checked, move to local storage
-const bookmarkCheckbox = document.querySelectorAll(
-  '[data-js="bookmark-checkboxes"]'
-);
-const bookmarkedQuestionsArray = [];
+// const bookmarkCheckbox = document.querySelectorAll(
+//   '[data-js="bookmark-checkboxes"]'
+// );
+// const bookmarkedQuestionsArray = [];
 
-function addNewBookmarkToArray(event) {
-  if (event.target.checked === true) {
-    const eventParent = event.target.parentElement;
-    const newBookmarkedQuestion = {
-      index: bookmarkedQuestionsArray.length,
-      question: eventParent.children[2].textContent,
-      answer: eventParent.children[4].textContent,
-      tags: eventParent.children[5].textContent,
-    };
-    bookmarkedQuestionsArray.push(newBookmarkedQuestion);
-    console.log(event.target);
-    return newBookmarkedQuestion;
-  } else {
-    bookmarkedQuestionsArray.splice(1, 1);
-  }
-}
+// function addNewBookmarkToArray(event) {
+//   if (event.target.checked === true) {
+//     const eventParent = event.target.parentElement;
+//     const newBookmarkedQuestion = {
+//       index: bookmarkedQuestionsArray.length,
+//       question: eventParent.children[2].textContent,
+//       answer: eventParent.children[4].textContent,
+//       tags: eventParent.children[5].textContent,
+//     };
+//     bookmarkedQuestionsArray.push(newBookmarkedQuestion);
+//     console.log(event.target);
+//     return newBookmarkedQuestion;
+//   } else {
+//     bookmarkedQuestionsArray.splice(1, 1);
+//   }
+// }
 
-bookmarkCheckbox.forEach((event) => {
-  event.addEventListener("click", (event) => {
-    addNewBookmarkToArray(event);
-    console.log(bookmarkedQuestionsArray);
-    localStorage.setItem(
-      bookmarkedQuestionsArray,
-      JSON.stringify(bookmarkedQuestionsArray)
-    );
-  });
-});
+// bookmarkCheckbox.forEach((event) => {
+//   event.addEventListener("click", (event) => {
+//     addNewBookmarkToArray(event);
+//     console.log(bookmarkedQuestionsArray);
+//     localStorage.setItem(
+//       bookmarkedQuestionsArray,
+//       JSON.stringify(bookmarkedQuestionsArray)
+//     );
+//   });
+// });
 
 // create bookmarked questions
 if (bookmarkedMain) {
