@@ -68,9 +68,7 @@ function createCard(singleCard) {
       </label>
       <h2 class="question" data-js="questions">${cardQuestion}</h2>
       <button class="answer-button" data-js="answer-buttons">Show Answer</button>
-      <p class="answer hidden" aria-hidden="true" data-js="answers">
-        ${cardAnswer}
-      </p>
+      <p class="answer hidden" aria-hidden="true" data-js="answers">${cardAnswer}</p>
       <ul class="tags" aria-label="question tag" data-js="tags">
       </ul>
     </article>
@@ -109,17 +107,30 @@ const bookmarkedQuestionsArray = [];
 function addNewBookmarkToArray(event) {
   if (event.target.checked === true) {
     const eventParent = event.target.parentElement;
+    const eventQuestion = eventParent.querySelector(
+      '[data-js="questions"]'
+    ).textContent;
+    const eventAnswer = eventParent.querySelector(
+      '[data-js="answers"]'
+    ).textContent;
+    const eventTags = eventParent
+      .querySelector('[data-js="tags"]')
+      .textContent.split("#");
+    // only here to delete the first empty element from eventTags
+    const deleteFirstArrayElement = eventTags.shift();
+
     const newBookmarkedQuestion = {
       index: bookmarkedQuestionsArray.length,
-      question: eventParent.children[2].textContent,
-      answer: eventParent.children[4].textContent,
-      tags: eventParent.children[5].textContent,
+      question: eventQuestion,
+      answer: eventAnswer,
+      tags: eventTags,
+      id: event.target.id,
     };
     bookmarkedQuestionsArray.push(newBookmarkedQuestion);
-    console.log(event.target);
+    console.log(bookmarkedQuestionsArray.length);
     return newBookmarkedQuestion;
   } else {
-    bookmarkedQuestionsArray.splice(1, 1);
+    console.log(event.target.id);
   }
 }
 
@@ -161,3 +172,9 @@ answerButtons.forEach((button) => {
     hideNextSibling(button);
   });
 });
+
+function summe(a, b) {
+  return a + b;
+}
+
+console.log(summe(2, 3));
