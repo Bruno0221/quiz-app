@@ -44,9 +44,6 @@ function createCard(singleCard) {
   const cardQuestion = singleCard.question;
   const cardAnswer = singleCard.answer;
   const cardID = questionArray.indexOf(singleCard);
-  const cardTag1 = singleCard.tags[0];
-  const cardTag2 = singleCard.tags[1];
-  const cardTag3 = singleCard.tags[2];
 
   const main = document.querySelector("main");
   const newCard = document.createElement("article");
@@ -71,29 +68,25 @@ function createCard(singleCard) {
       </label>
       <h2 class="question" data-js="questions">${cardQuestion}</h2>
       <button class="answer-button" data-js="answer-buttons">Show Answer</button>
-      <p class="answer hidden" aria-hidden="true" data-js="answers">
-        ${cardAnswer}
-      </p>
+      <p class="answer hidden" aria-hidden="true" data-js="answers">${cardAnswer}</p>
       <ul class="tags" aria-label="question tag" data-js="tags">
-        <li class="tag" data-js="tags">#${cardTag1}</li>
-        <li class="tag" data-js="tags">#${cardTag2}</li>
-        <li class="tag" data-js="tags">#${cardTag3}</li>
       </ul>
     </article>
     `;
 
   main.appendChild(newCard);
-  // hiermit möchte ich die tags aus jedem object als li an die zugehörige karte hängen. Es werden aber alle Tags an die erste Karte gehangen
-  singleCard.tags.forEach(createNewTag);
+  const tagParent = newCard.querySelector('[data-js="tags"]');
+
+  singleCard.tags.forEach((tag) => {
+    createNewTag(tag, tagParent);
+  });
 }
 
 // Create Tags
-function createNewTag(tag) {
-  // wenn ich mit parent  auf "main" verweise, werden die Tags den Karten richtig zugeordnet, aber natürlich ans falsche Element gehangen
-  const parent = document.querySelector('[data-js="tags"]');
+function createNewTag(tag, parent) {
   const newTag = document.createElement("li");
   newTag.classList.add("tag");
-  newTag.textContent = tag;
+  newTag.textContent = "#" + tag;
   parent.appendChild(newTag);
 }
 
@@ -106,38 +99,51 @@ if (indexMain) {
 }
 
 //when bookmark is checked, move to local storage
-// const bookmarkCheckbox = document.querySelectorAll(
-//   '[data-js="bookmark-checkboxes"]'
-// );
-// const bookmarkedQuestionsArray = [];
+const bookmarkCheckbox = document.querySelectorAll(
+  '[data-js="bookmark-checkboxes"]'
+);
+const bookmarkedQuestionsArray = [];
 
-// function addNewBookmarkToArray(event) {
-//   if (event.target.checked === true) {
-//     const eventParent = event.target.parentElement;
-//     const newBookmarkedQuestion = {
-//       index: bookmarkedQuestionsArray.length,
-//       question: eventParent.children[2].textContent,
-//       answer: eventParent.children[4].textContent,
-//       tags: eventParent.children[5].textContent,
-//     };
-//     bookmarkedQuestionsArray.push(newBookmarkedQuestion);
-//     console.log(event.target);
-//     return newBookmarkedQuestion;
-//   } else {
-//     bookmarkedQuestionsArray.splice(1, 1);
-//   }
-// }
+function addNewBookmarkToArray(event) {
+  if (event.target.checked === true) {
+    const eventParent = event.target.parentElement;
+    const eventQuestion = eventParent.querySelector(
+      '[data-js="questions"]'
+    ).textContent;
+    const eventAnswer = eventParent.querySelector(
+      '[data-js="answers"]'
+    ).textContent;
+    const eventTags = eventParent
+      .querySelector('[data-js="tags"]')
+      .textContent.split("#");
+    // only here to delete the first empty element from eventTags
+    const deleteFirstArrayElement = eventTags.shift();
 
-// bookmarkCheckbox.forEach((event) => {
-//   event.addEventListener("click", (event) => {
-//     addNewBookmarkToArray(event);
-//     console.log(bookmarkedQuestionsArray);
-//     localStorage.setItem(
-//       bookmarkedQuestionsArray,
-//       JSON.stringify(bookmarkedQuestionsArray)
-//     );
-//   });
-// });
+    const newBookmarkedQuestion = {
+      index: bookmarkedQuestionsArray.length,
+      question: eventQuestion,
+      answer: eventAnswer,
+      tags: eventTags,
+      id: event.target.id,
+    };
+    bookmarkedQuestionsArray.push(newBookmarkedQuestion);
+    console.log(bookmarkedQuestionsArray.length);
+    return newBookmarkedQuestion;
+  } else {
+    console.log(event.target.id);
+  }
+}
+
+bookmarkCheckbox.forEach((event) => {
+  event.addEventListener("click", (event) => {
+    addNewBookmarkToArray(event);
+    console.log(bookmarkedQuestionsArray);
+    localStorage.setItem(
+      bookmarkedQuestionsArray,
+      JSON.stringify(bookmarkedQuestionsArray)
+    );
+  });
+});
 
 // create bookmarked questions
 if (bookmarkedMain) {
@@ -166,3 +172,9 @@ answerButtons.forEach((button) => {
     hideNextSibling(button);
   });
 });
+
+function summe(a, b) {
+  return a + b;
+}
+
+console.log(summe(2, 3));
