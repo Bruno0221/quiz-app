@@ -89,6 +89,10 @@ function createCard(singleCard) {
   );
   newButton.setAttribute("data-js", "answer-buttons");
 
+  newButton.addEventListener("click", () => {
+    toggleNextSibling(newButton);
+  });
+
   const newAnswer = createNewElement("p", newCard, "answer", cardAnswer);
   newAnswer.classList.add("hidden");
   newAnswer.setAttribute("data-js", "answers");
@@ -101,7 +105,7 @@ function createCard(singleCard) {
   const tagParent = newCard.querySelector('[data-js="tags"]');
 
   singleCard.tags.forEach((tag) => {
-    createNewTag(tag, tagParent);
+    createNewElement("li", tagParent, "tag", "#" + tag);
   });
 }
 
@@ -117,6 +121,7 @@ function createNewTag(tag, parent) {
 const indexMain = document.querySelector('[data-js="index-main"]');
 const bookmarkedMain = document.querySelector('[data-js="bookmarked-main"]');
 
+//render main
 if (indexMain) {
   questionArray.forEach(createCard);
 }
@@ -125,7 +130,7 @@ if (indexMain) {
 const bookmarkCheckbox = document.querySelectorAll(
   '[data-js="bookmark-checkboxes"]'
 );
-const bookmarkedQuestionsArray = [];
+let bookmarkedQuestionsArray = [];
 
 function addNewBookmarkToArray(event) {
   if (event.target.checked === true) {
@@ -176,9 +181,7 @@ if (bookmarkedMain) {
 }
 
 // Show Answers
-const answerButtons = document.querySelectorAll('[data-js="answer-buttons"]');
-
-function hideNextSibling(name) {
+function toggleNextSibling(name) {
   const nextSibling = name.nextElementSibling;
   toggleClass(nextSibling, "hidden");
   toggleClass(nextSibling, "answer-appear");
@@ -191,12 +194,6 @@ function hideNextSibling(name) {
     nextSibling.setAttribute("aria-hidden", "false");
   }
 }
-
-answerButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    hideNextSibling(button);
-  });
-});
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
