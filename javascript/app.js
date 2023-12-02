@@ -14,30 +14,33 @@ if (button) {
 // Questions
 const questionArray = [
   {
-    id: 1,
+    id: 0,
     question: "What property flips the axes in flexbox?",
     answer: "flex-direction",
     tags: ["html", "flexbox", "css"],
   },
   {
-    id: 2,
+    id: 1,
     question: "What properties are used to center items in flexbox?",
     answer: "justify-content & align items ",
     tags: ["html", "flexbox", "css"],
   },
   {
-    id: 3,
+    id: 2,
     question: "What properties are used to center items in grid?",
     answer: "place-items: center:",
     tags: ["html", "grid", "css"],
   },
   {
-    id: 4,
+    id: 3,
     question: "What is one way to center items without flex or grid",
     answer: "margin: 0 auto;",
     tags: ["html", "css", "centering"],
   },
 ];
+
+// Array for bookmarked IDs
+let bookmarkedQuestions = [];
 
 // function to create Elements
 function createNewElement(elementName, elementParent, classList, textContent) {
@@ -53,7 +56,7 @@ const main = document.querySelector("main");
 function createCard(singleCard) {
   const cardQuestion = singleCard.question;
   const cardAnswer = singleCard.answer;
-  const cardID = questionArray.indexOf(singleCard);
+  const cardID = singleCard.id;
 
   const main = document.querySelector("main");
   const newCard = createNewElement("article", main, "question-container");
@@ -64,19 +67,30 @@ function createCard(singleCard) {
   newInput.id = "bookmark-checkbox" + cardID;
   newInput.setAttribute("data-js", "bookmark-checkbox" + cardID);
 
+  // move id of bookmarked question into an array
+  newInput.addEventListener("click", () => {
+    if (newInput.checked === true) {
+      bookmarkedQuestions.push(cardID);
+    } else {
+      bookmarkedQuestions = bookmarkedQuestions.filter(
+        (bookmark) => bookmark !== cardID
+      );
+    }
+  });
+
   const newLabel = createNewElement("label", newCard);
   newLabel.setAttribute("for", "bookmark-checkbox" + cardID);
   newLabel.innerHTML = `<svg
-                          class="bookmark"
-                          aria-label=" Clickable Bookmark Icon"
-                          version="1.1"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          >
-                          <title>bookmark</title>
-                          <path
-                          d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
-                          ></path>`;
+  class="bookmark"
+                            aria-label=" Clickable Bookmark Icon"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            >
+                            <title>bookmark</title>
+                            <path
+                            d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
+                        ></path>`;
 
   const newQuestion = createNewElement("h2", newCard, "question", cardQuestion);
   newQuestion.setAttribute("data-js", "questions");
@@ -88,6 +102,11 @@ function createCard(singleCard) {
     "Show Answer"
   );
   newButton.setAttribute("data-js", "answer-buttons");
+
+  // Shows and hides answers
+  newButton.addEventListener("click", () => {
+    toggleNextSibling(newButton);
+  });
 
   const newAnswer = createNewElement("p", newCard, "answer", cardAnswer);
   newAnswer.classList.add("hidden");
@@ -101,84 +120,29 @@ function createCard(singleCard) {
   const tagParent = newCard.querySelector('[data-js="tags"]');
 
   singleCard.tags.forEach((tag) => {
-    createNewTag(tag, tagParent);
+    createNewElement("li", tagParent, "tag", "#" + tag);
   });
 }
 
-// Create Tags
-function createNewTag(tag, parent) {
-  const newTag = document.createElement("li");
-  newTag.classList.add("tag");
-  newTag.textContent = "#" + tag;
-  parent.appendChild(newTag);
-}
-
-// Create Card on index.html
-const indexMain = document.querySelector('[data-js="index-main"]');
-const bookmarkedMain = document.querySelector('[data-js="bookmarked-main"]');
-
-if (indexMain) {
+//render main
+function renderMain() {
+  main.innerHTML = "";
   questionArray.forEach(createCard);
 }
 
-//when bookmark is checked, move to local storage
-const bookmarkCheckbox = document.querySelectorAll(
-  '[data-js="bookmark-checkboxes"]'
-);
-const bookmarkedQuestionsArray = [];
-
-function addNewBookmarkToArray(event) {
-  if (event.target.checked === true) {
-    const eventParent = event.target.parentElement;
-    const eventQuestion = eventParent.querySelector(
-      '[data-js="questions"]'
-    ).textContent;
-    const eventAnswer = eventParent.querySelector(
-      '[data-js="answers"]'
-    ).textContent;
-    const eventTags = eventParent
-      .querySelector('[data-js="tags"]')
-      .textContent.split("#");
-    // only here to delete the first empty element from eventTags
-    const deleteFirstArrayElement = eventTags.shift();
-
-    const newBookmarkedQuestion = {
-      index: bookmarkedQuestionsArray.length,
-      question: eventQuestion,
-      answer: eventAnswer,
-      tags: eventTags,
-      id: bookmarkedQuestionsArray.indexOf(event.target),
-    };
-    bookmarkedQuestionsArray.push(newBookmarkedQuestion);
-  }
-}
-
-function removeBookmarkFromArray(event) {
-  if (event.target.checked === false) {
-    const buttonId = event.target.id;
-    const arrayId = buttonId[buttonId.length - 1];
-    const newArray = bookmarkedQuestionsArray.slice(arrayId);
-    console.log(newArray);
-  }
-}
-
-bookmarkCheckbox.forEach((bookmark) => {
-  bookmark.addEventListener("click", (event) => {
-    addNewBookmarkToArray(event);
-    removeBookmarkFromArray(event);
-    console.log(bookmarkedQuestionsArray);
+// render bookmarked
+function renderBookmarked() {
+  main.innerHTML = "";
+  bookmarkedQuestions.forEach((id) => {
+    const bookmarkedQuestion = questionArray.find(
+      (question) => question.id === id
+    );
+    createCard(bookmarkedQuestion);
   });
-});
-
-// create bookmarked questions
-if (bookmarkedMain) {
-  bookmarkedQuestionsArray.forEach(createCard);
 }
 
 // Show Answers
-const answerButtons = document.querySelectorAll('[data-js="answer-buttons"]');
-
-function hideNextSibling(name) {
+function toggleNextSibling(name) {
   const nextSibling = name.nextElementSibling;
   toggleClass(nextSibling, "hidden");
   toggleClass(nextSibling, "answer-appear");
@@ -192,11 +156,18 @@ function hideNextSibling(name) {
   }
 }
 
-answerButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    hideNextSibling(button);
-  });
+const homeButton = document.querySelector('[data-js="home-page"]');
+const bookmarkedButton = document.querySelector('[data-js="bookmarked-page"]');
+
+homeButton.addEventListener("click", () => {
+  renderMain();
 });
+bookmarkedButton.addEventListener("click", () => {
+  renderBookmarked();
+});
+
+// render main on load
+renderMain();
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
