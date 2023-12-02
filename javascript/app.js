@@ -39,6 +39,16 @@ const questionArray = [
   },
 ];
 
+// function to create Elements
+function createNewElement(elementName, elementParent, classList, textContent) {
+  const element = document.createElement(elementName);
+  element.classList.add(classList);
+  element.textContent = textContent;
+  elementParent.appendChild(element);
+  return element;
+}
+const main = document.querySelector("main");
+
 // create Question Card
 function createCard(singleCard) {
   const cardQuestion = singleCard.question;
@@ -46,35 +56,48 @@ function createCard(singleCard) {
   const cardID = questionArray.indexOf(singleCard);
 
   const main = document.querySelector("main");
-  const newCard = document.createElement("article");
-  newCard.innerHTML = `
-      <article
-      class="question-container"
-      aria-label="card containing a question"
-      >
-      <input class="hidden bookmark-checkbox" type="checkbox" id="bookmark-checkbox${cardID}" data-js="bookmark-checkboxes">
-      <label for="bookmark-checkbox${cardID}">
-          <svg
-            class="bookmark"
-            aria-label=" Clickable Bookmark Icon"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-                      >
-                      <title>bookmark</title>
-                      <path
-                      d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
-                      ></path>
-      </label>
-      <h2 class="question" data-js="questions">${cardQuestion}</h2>
-      <button class="answer-button" data-js="answer-buttons">Show Answer</button>
-      <p class="answer hidden" aria-hidden="true" data-js="answers">${cardAnswer}</p>
-      <ul class="tags" aria-label="question tag" data-js="tags">
-      </ul>
-    </article>
-    `;
+  const newCard = createNewElement("article", main, "question-container");
 
-  main.appendChild(newCard);
+  const newInput = createNewElement("input", newCard, "bookmark-checkbox");
+  newInput.classList.add("hidden");
+  newInput.type = "checkbox";
+  newInput.id = "bookmark-checkbox" + cardID;
+  newInput.setAttribute("data-js", "bookmark-checkbox" + cardID);
+
+  const newLabel = createNewElement("label", newCard);
+  newLabel.setAttribute("for", "bookmark-checkbox" + cardID);
+  newLabel.innerHTML = `<svg
+                          class="bookmark"
+                          aria-label=" Clickable Bookmark Icon"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          >
+                          <title>bookmark</title>
+                          <path
+                          d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
+                          ></path>`;
+
+  const newQuestion = createNewElement("h2", newCard, "question", cardQuestion);
+  newQuestion.setAttribute("data-js", "questions");
+
+  const newButton = createNewElement(
+    "button",
+    newCard,
+    "answer-button",
+    "Show Answer"
+  );
+  newButton.setAttribute("data-js", "answer-buttons");
+
+  const newAnswer = createNewElement("p", newCard, "answer", cardAnswer);
+  newAnswer.classList.add("hidden");
+  newAnswer.setAttribute("data-js", "answers");
+  newAnswer.setAttribute("aria-hidden", "true");
+
+  const newTagList = createNewElement("ul", newCard, "tags");
+  newTagList.setAttribute("data-js", "tags");
+  newTagList.setAttribute("aria-label", "question tag");
+
   const tagParent = newCard.querySelector('[data-js="tags"]');
 
   singleCard.tags.forEach((tag) => {
@@ -124,24 +147,26 @@ function addNewBookmarkToArray(event) {
       question: eventQuestion,
       answer: eventAnswer,
       tags: eventTags,
-      id: event.target.id,
+      id: bookmarkedQuestionsArray.indexOf(event.target),
     };
     bookmarkedQuestionsArray.push(newBookmarkedQuestion);
-    console.log(bookmarkedQuestionsArray.length);
-    return newBookmarkedQuestion;
-  } else {
-    console.log(event.target.id);
   }
 }
 
-bookmarkCheckbox.forEach((event) => {
-  event.addEventListener("click", (event) => {
+function removeBookmarkFromArray(event) {
+  if (event.target.checked === false) {
+    const buttonId = event.target.id;
+    const arrayId = buttonId[buttonId.length - 1];
+    const newArray = bookmarkedQuestionsArray.slice(arrayId);
+    console.log(newArray);
+  }
+}
+
+bookmarkCheckbox.forEach((bookmark) => {
+  bookmark.addEventListener("click", (event) => {
     addNewBookmarkToArray(event);
+    removeBookmarkFromArray(event);
     console.log(bookmarkedQuestionsArray);
-    localStorage.setItem(
-      bookmarkedQuestionsArray,
-      JSON.stringify(bookmarkedQuestionsArray)
-    );
   });
 });
 
@@ -173,8 +198,18 @@ answerButtons.forEach((button) => {
   });
 });
 
-function summe(a, b) {
-  return a + b;
-}
+// // Add New Question
+// const questionForm = document.querySelector('[data-js="new-question-form"]');
+// const questionFormButton = document.querySelector(
+//   '[data-js="new-question-button"]'
+// );
+// console.log(questionFormButton);
 
-console.log(summe(2, 3));
+// questionForm.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   console.log(event.target);
+
+//   const formData = new FormData(event.target);
+//   const data = Object.fromEntries(formData);
+//   console.log(data);
+// });
