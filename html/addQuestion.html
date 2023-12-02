@@ -15,7 +15,23 @@
     <header aria-labelledby="title">
       <h1 id="title" class="title" id="title">Quiz App</h1>
     </header>
-    <main data-js="bookmarked-main"></main>
+    <main data-js="new-question-main">
+      <article>
+        <form data-js="new-question-form">
+          <label for="new-question">New Question:</label>
+          <input type="text" name="new-question" id="new-question" />
+          <label for="new-answer">New Answer:</label>
+          <input type="text" name="new-answer" id="new-answer" />
+          <label for="new-tag">New Tag:</label>
+          <input type="text" name="new-tag" id="new-tag" />
+          <input
+            type="submit"
+            value="Create New Question"
+            data-js="new-question-button"
+          />
+        </form>
+      </article>
+    </main>
     <footer class="footer">
       <ul class="footer-nav">
         <li class="footer-links">
