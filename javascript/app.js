@@ -124,10 +124,6 @@ function createCard(singleCard) {
   });
 }
 
-// Create Card on index.html
-const indexMain = document.querySelector('[data-js="index-main"]');
-const bookmarkedMain = document.querySelector('[data-js="bookmarked-main"]');
-
 //render main
 function renderMain() {
   main.innerHTML = "";
@@ -167,8 +163,6 @@ homeButton.addEventListener("click", () => {
   renderMain();
 });
 bookmarkedButton.addEventListener("click", () => {
-  console.log("test");
-
   renderBookmarked();
 });
 
