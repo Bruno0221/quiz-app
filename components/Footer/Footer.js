@@ -7,9 +7,6 @@ export function Footer() {
   const homeNav = createNewElement("li", footerNav, "footer-links");
   const homeNavLink = createNewElement("a", homeNav);
   setAttributes(homeNavLink, "home");
-  // homeNavLink.setAttribute("href", "#title");
-  // homeNavLink.setAttribute("aria-label", "navigation link home");
-  // homeNavLink.setAttribute("data-js", "home-page");
   homeNavLink.innerHTML = `<svg
                     class="nav-icon"
                     xmlns="http://www.w3.org/2000/svg"
@@ -82,9 +79,6 @@ export function Footer() {
   const bookmarkNav = createNewElement("li", footerNav, "footer-links");
   const bookmarkNavLink = createNewElement("a", bookmarkNav);
   setAttributes(bookmarkNavLink, "bookmark");
-  // bookmarkNavLink.setAttribute("href", "#title");
-  // bookmarkNavLink.setAttribute("aria-label", "navigation link bookmarks");
-  // bookmarkNavLink.setAttribute("data-js", "bookmark-page");
   bookmarkNavLink.innerHTML = `<svg
                         class="nav-icon"
                         version="1.1"
@@ -100,9 +94,6 @@ export function Footer() {
   const profileNav = createNewElement("li", footerNav, "footer-links");
   const profileNavLink = createNewElement("a", profileNav);
   setAttributes(profileNavLink, "profile");
-  // profileNavLink.setAttribute("href", "#title");
-  // profileNavLink.setAttribute("aria-label", "navigation link user profile");
-  // profileNavLink.setAttribute("data-js", "profile-page");
   profileNavLink.innerHTML = `<svg
                         class="nav-icon"
                         version="1.1"
