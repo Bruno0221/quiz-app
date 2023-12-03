@@ -1,6 +1,8 @@
 import { createNewElement } from "../../utils/CreateNewElement.js";
 import { toggleNextSibling } from "../../utils/ToggleNextSibling.js";
-import bookmarkedQuestions from "../../utils/BookmarkedArray.js";
+//import bookmarkedQuestions from "../../utils/BookmarkedArray.js";
+
+export let bookmarkedQuestions = [];
 
 export function createCard(singleCard) {
   const cardQuestion = singleCard.question;

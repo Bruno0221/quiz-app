@@ -1,7 +1,7 @@
 import { toggleClass } from "../utils/ToggleClass.js";
 import { questionArray } from "../utils/QuestionArray.js";
 import { Header } from "../components/Header/Header.js";
-import { createCard } from "../components/Card/Card.js";
+import { createCard, bookmarkedQuestions } from "../components/Card/Card.js";
 import { Footer } from "../components/Footer/Footer.js";
 
 // Dark Mode
@@ -12,9 +12,6 @@ if (button) {
     toggleClass(body, "other-theme");
   });
 }
-
-// Array for bookmarked IDs
-let bookmarkedQuestions = [];
 
 const root = document.querySelector("#root");
 
@@ -29,32 +26,27 @@ function renderMain() {
 // render bookmarked
 function renderBookmarked() {
   root.innerHTML = "";
+  Header();
   bookmarkedQuestions.forEach((id) => {
     const bookmarkedQuestion = questionArray.find(
       (question) => question.id === id
     );
-    Header();
     createCard(bookmarkedQuestion);
-    Footer();
+    const checkbox = document.querySelector(".bookmark-checkbox");
+    checkbox.checked = true;
+    console.log(checkbox.checked);
   });
+  Footer();
 }
+
 renderMain();
 
 const homeButton = document.querySelector('[data-js="home-page"]');
 const bookmarkedButton = document.querySelector('[data-js="bookmark-page"]');
 const navButtons = document.querySelectorAll('[data-js*="page"]');
-console.log(navButtons);
 
-homeButton.addEventListener("click", (event) => {
-  navButtons.forEach((navButton) => navButton.classList.add("current-page"));
-  event.target.parentElement.parentElement.classList.add("current-page");
-  console.log(event.target);
-
-  renderMain();
-});
-bookmarkedButton.addEventListener("click", () => {
-  renderBookmarked();
-});
+homeButton.addEventListener("click", renderMain);
+bookmarkedButton.addEventListener("click", renderBookmarked);
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
