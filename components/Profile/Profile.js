@@ -2,8 +2,10 @@ import { createNewElement } from "../../utils/CreateNewElement.js";
 import { userProfile } from "../../utils/UserProfile.js";
 import { questionArray } from "../../utils/QuestionArray.js";
 import { bookmarkedQuestions } from "../Card/Card.js";
+import { toggleClass } from "../../utils/ToggleClass.js";
 
 export function Profile() {
+  const body = document.querySelector("body");
   const main = document.querySelector("main");
   //Header Section
   const profileHeader = createNewElement("section", main, "profile-header");
@@ -79,6 +81,12 @@ export function Profile() {
   settingsInput.type = "checkbox";
   const settingsLabel = createNewElement("label", settingsContainer);
   settingsLabel.textContent = "Dark Mode";
+
+  //dark mode
+  const button = document.querySelector("#dark-mode");
+  button.addEventListener("click", () => {
+    toggleClass(body, "other-theme");
+  });
 }
 
 function addSrcAndAlt(element, src, alt) {

@@ -1,17 +1,13 @@
-import { toggleClass } from "../utils/ToggleClass.js";
 import { questionArray } from "../utils/QuestionArray.js";
 import { Header } from "../components/Header/Header.js";
 import { createCard, bookmarkedQuestions } from "../components/Card/Card.js";
 import { Profile } from "../components/Profile/Profile.js";
 import { Footer } from "../components/Footer/Footer.js";
 
-// Dark Mode
-const body = document.querySelector("body");
-
 const root = document.querySelector("#root");
 
 //render main
-function renderMain() {
+export function renderMain() {
   root.innerHTML = "";
   Header();
   questionArray.forEach(createCard);
@@ -19,7 +15,7 @@ function renderMain() {
 }
 
 //render profile
-function renderProfile() {
+export function renderProfile() {
   root.innerHTML = "";
   Header();
   Profile();
@@ -27,7 +23,7 @@ function renderProfile() {
 }
 
 // render bookmarked
-function renderBookmarked() {
+export function renderBookmarked() {
   root.innerHTML = "";
   Header();
   bookmarkedQuestions.forEach((id) => {
@@ -37,26 +33,20 @@ function renderBookmarked() {
     createCard(bookmarkedQuestion);
     const checkbox = document.querySelector(".bookmark-checkbox");
     checkbox.checked = true;
-    console.log(checkbox.checked);
   });
   Footer();
 }
 
-//renderMain();
-renderProfile();
+renderMain();
 
-const homeButton = document.querySelector('[data-js="home-page"]');
-const bookmarkedButton = document.querySelector('[data-js="bookmark-page"]');
-const profileButton = document.querySelector('[data-js="profile-page"]');
-const navButtons = document.querySelectorAll('[data-js*="page"]');
-const button = document.querySelector("#dark-mode");
+// const homeButton = document.querySelector('[data-js="home-page"]');
+// const bookmarkedButton = document.querySelector('[data-js="bookmark-page"]');
+// const profileButton = document.querySelector('[data-js="profile-page"]');
+// const navButtons = document.querySelectorAll('[data-js*="page"]');
 
-homeButton.addEventListener("click", renderMain);
-bookmarkedButton.addEventListener("click", renderBookmarked);
-profileButton.addEventListener("click", renderProfile);
-button.addEventListener("click", () => {
-  toggleClass(body, "other-theme");
-});
+// homeButton.addEventListener("click", renderMain);
+// bookmarkedButton.addEventListener("click", renderBookmarked);
+// profileButton.addEventListener("click", renderProfile);
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
