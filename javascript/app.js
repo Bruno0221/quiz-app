@@ -2,16 +2,11 @@ import { toggleClass } from "../utils/ToggleClass.js";
 import { questionArray } from "../utils/QuestionArray.js";
 import { Header } from "../components/Header/Header.js";
 import { createCard, bookmarkedQuestions } from "../components/Card/Card.js";
+import { Profile } from "../components/Profile/Profile.js";
 import { Footer } from "../components/Footer/Footer.js";
 
 // Dark Mode
-const button = document.querySelector("#dark-mode");
-const body = document.querySelector('[data-js="body"]');
-if (button) {
-  button.addEventListener("click", () => {
-    toggleClass(body, "other-theme");
-  });
-}
+const body = document.querySelector("body");
 
 const root = document.querySelector("#root");
 
@@ -20,6 +15,14 @@ function renderMain() {
   root.innerHTML = "";
   Header();
   questionArray.forEach(createCard);
+  Footer();
+}
+
+//render profile
+function renderProfile() {
+  root.innerHTML = "";
+  Header();
+  Profile();
   Footer();
 }
 
@@ -39,14 +42,21 @@ function renderBookmarked() {
   Footer();
 }
 
-renderMain();
+//renderMain();
+renderProfile();
 
 const homeButton = document.querySelector('[data-js="home-page"]');
 const bookmarkedButton = document.querySelector('[data-js="bookmark-page"]');
+const profileButton = document.querySelector('[data-js="profile-page"]');
 const navButtons = document.querySelectorAll('[data-js*="page"]');
+const button = document.querySelector("#dark-mode");
 
 homeButton.addEventListener("click", renderMain);
 bookmarkedButton.addEventListener("click", renderBookmarked);
+profileButton.addEventListener("click", renderProfile);
+button.addEventListener("click", () => {
+  toggleClass(body, "other-theme");
+});
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
