@@ -1,9 +1,8 @@
-import { createNewElement } from "../utils/CreateNewElement.js";
 import { toggleClass } from "../utils/ToggleClass.js";
-import { toggleNextSibling } from "../utils/ToggleNextSibling.js";
 import { questionArray } from "../utils/QuestionArray.js";
 import { Header } from "../components/Header/Header.js";
 import { createCard } from "../components/Card/Card.js";
+import { Footer } from "../components/Footer/Footer.js";
 
 // Dark Mode
 const button = document.querySelector("#dark-mode");
@@ -17,40 +16,45 @@ if (button) {
 // Array for bookmarked IDs
 let bookmarkedQuestions = [];
 
-const main = document.querySelector("main");
-
-// create Question Card
+const root = document.querySelector("#root");
 
 //render main
 function renderMain() {
-  main.innerHTML = "";
+  root.innerHTML = "";
   Header();
   questionArray.forEach(createCard);
+  Footer();
 }
 
 // render bookmarked
 function renderBookmarked() {
-  main.innerHTML = "";
+  root.innerHTML = "";
   bookmarkedQuestions.forEach((id) => {
     const bookmarkedQuestion = questionArray.find(
       (question) => question.id === id
     );
+    Header();
     createCard(bookmarkedQuestion);
+    Footer();
   });
 }
+renderMain();
 
 const homeButton = document.querySelector('[data-js="home-page"]');
-const bookmarkedButton = document.querySelector('[data-js="bookmarked-page"]');
+const bookmarkedButton = document.querySelector('[data-js="bookmark-page"]');
+const navButtons = document.querySelectorAll('[data-js*="page"]');
+console.log(navButtons);
 
-homeButton.addEventListener("click", () => {
+homeButton.addEventListener("click", (event) => {
+  navButtons.forEach((navButton) => navButton.classList.add("current-page"));
+  event.target.parentElement.parentElement.classList.add("current-page");
+  console.log(event.target);
+
   renderMain();
 });
 bookmarkedButton.addEventListener("click", () => {
   renderBookmarked();
 });
-
-// render main on load
-renderMain();
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
