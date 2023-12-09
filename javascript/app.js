@@ -55,15 +55,6 @@ export function renderBookmarked() {
 
 renderMain();
 
-// const homeButton = document.querySelector('[data-js="home-page"]');
-// const bookmarkedButton = document.querySelector('[data-js="bookmark-page"]');
-// const profileButton = document.querySelector('[data-js="profile-page"]');
-// const navButtons = document.querySelectorAll('[data-js*="page"]');
-
-// homeButton.addEventListener("click", renderMain);
-// bookmarkedButton.addEventListener("click", renderBookmarked);
-// profileButton.addEventListener("click", renderProfile);
-
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
 // const questionFormButton = document.querySelector(

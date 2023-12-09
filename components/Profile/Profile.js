@@ -11,10 +11,15 @@ import { toggleClass } from "../../utils/ToggleClass.js";
 export function Profile() {
   const body = document.querySelector("body");
   const main = document.querySelector("main");
+  const profileContainer = createNewElementWithClass(
+    "article",
+    main,
+    "question-container"
+  );
   //Header Section
   const profileHeader = createNewElementWithClass(
     "section",
-    main,
+    profileContainer,
     "profile-header"
   );
   const profileImg = createNewElementWithClass(
@@ -33,7 +38,7 @@ export function Profile() {
   //About Section
   const aboutSection = createNewElementWithClass(
     "section",
-    main,
+    profileContainer,
     "profile-about"
   );
   const aboutHeader = createNewElementWithClassAndContent(
@@ -94,7 +99,7 @@ export function Profile() {
   //Settings Section
   const settingsSection = createNewElementWithClass(
     "section",
-    main,
+    profileContainer,
     "profile-settings"
   );
   const settingsHeader = createNewElementWithClassAndContent(
