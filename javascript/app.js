@@ -35,7 +35,6 @@ export function renderBookmarked() {
       createCard(bookmarkedQuestion);
       const checkboxes = document.querySelectorAll(".bookmark-checkbox");
       checkboxes.forEach((checkbox) => {
-        checkbox.checked = true;
         checkbox.addEventListener("click", () => renderBookmarked());
       });
     });

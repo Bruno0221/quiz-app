@@ -84,10 +84,8 @@ export function Profile() {
   settingsLabel.textContent = "Dark Mode";
   settingsLabel.setAttribute("for", "dark-mode");
 
-  //dark mode
+  // toggle dark mode
   const button = document.querySelector("#dark-mode");
-  console.log(button);
-
   button.addEventListener("click", () => {
     toggleClass(body, "other-theme");
   });
