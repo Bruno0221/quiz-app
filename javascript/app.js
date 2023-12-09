@@ -31,8 +31,8 @@ export function renderBookmarked() {
       (question) => question.id === id
     );
     createCard(bookmarkedQuestion);
-    const checkbox = document.querySelector(".bookmark-checkbox");
-    checkbox.checked = true;
+    const checkboxes = document.querySelectorAll(".bookmark-checkbox");
+    checkboxes.forEach((checkbox) => (checkbox.checked = true));
   });
   Footer();
 }
