@@ -1,6 +1,7 @@
 import { questionArray } from "../utils/QuestionArray.js";
 import { Header } from "../components/Header/Header.js";
 import { createCard, bookmarkedQuestions } from "../components/Card/Card.js";
+import { BookmarkPlaceholder } from "../components/BookmarksPlaceholder/BookmarksPlaceholder.js";
 import { Profile } from "../components/Profile/Profile.js";
 import { Footer } from "../components/Footer/Footer.js";
 
@@ -26,14 +27,18 @@ export function renderProfile() {
 export function renderBookmarked() {
   root.innerHTML = "";
   Header();
-  bookmarkedQuestions.forEach((id) => {
-    const bookmarkedQuestion = questionArray.find(
-      (question) => question.id === id
-    );
-    createCard(bookmarkedQuestion);
-    const checkboxes = document.querySelectorAll(".bookmark-checkbox");
-    checkboxes.forEach((checkbox) => (checkbox.checked = true));
-  });
+  if (bookmarkedQuestions.length > 0) {
+    bookmarkedQuestions.forEach((id) => {
+      const bookmarkedQuestion = questionArray.find(
+        (question) => question.id === id
+      );
+      createCard(bookmarkedQuestion);
+      const checkboxes = document.querySelectorAll(".bookmark-checkbox");
+      checkboxes.forEach((checkbox) => (checkbox.checked = true));
+    });
+  } else {
+    BookmarkPlaceholder();
+  }
   Footer();
 }
 
