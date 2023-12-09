@@ -79,11 +79,15 @@ export function Profile() {
   const settingsInput = createNewElement("input", settingsContainer, "toggle");
   settingsInput.id = "dark-mode";
   settingsInput.type = "checkbox";
+  settingsInput.setAttribute("name", "dark-mode");
   const settingsLabel = createNewElement("label", settingsContainer);
   settingsLabel.textContent = "Dark Mode";
+  settingsLabel.setAttribute("for", "dark-mode");
 
   //dark mode
   const button = document.querySelector("#dark-mode");
+  console.log(button);
+
   button.addEventListener("click", () => {
     toggleClass(body, "other-theme");
   });
