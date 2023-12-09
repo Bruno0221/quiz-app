@@ -1,4 +1,8 @@
-import { createNewElement } from "../../utils/CreateNewElement.js";
+import {
+  createNewElement,
+  createNewElementWithClass,
+  createNewElementWithClassAndContent,
+} from "../../utils/CreateNewElements.js";
 import {
   renderMain,
   renderBookmarked,
@@ -7,9 +11,9 @@ import {
 
 export function Footer() {
   const root = document.querySelector("#root");
-  const footer = createNewElement("footer", root, "footer");
-  const footerNav = createNewElement("ul", footer, "footer-nav");
-  const homeNav = createNewElement("li", footerNav, "footer-links");
+  const footer = createNewElementWithClass("footer", root, "footer");
+  const footerNav = createNewElementWithClass("ul", footer, "footer-nav");
+  const homeNav = createNewElementWithClass("li", footerNav, "footer-links");
   const homeNavLink = createNewElement("a", homeNav);
   setAttributes(homeNavLink, "home");
   homeNavLink.innerHTML = `<svg
@@ -81,7 +85,11 @@ export function Footer() {
                     </g>
                     </svg>
                     `;
-  const bookmarkNav = createNewElement("li", footerNav, "footer-links");
+  const bookmarkNav = createNewElementWithClass(
+    "li",
+    footerNav,
+    "footer-links"
+  );
   const bookmarkNavLink = createNewElement("a", bookmarkNav);
   setAttributes(bookmarkNavLink, "bookmark");
   bookmarkNavLink.innerHTML = `<svg
@@ -96,7 +104,7 @@ export function Footer() {
                         ></path>
                         </svg>
                         `;
-  const profileNav = createNewElement("li", footerNav, "footer-links");
+  const profileNav = createNewElementWithClass("li", footerNav, "footer-links");
   const profileNavLink = createNewElement("a", profileNav);
   setAttributes(profileNavLink, "profile");
   profileNavLink.innerHTML = `<svg
