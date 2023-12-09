@@ -15,6 +15,7 @@ export function Footer() {
   const footerNav = createNewElementWithClass("ul", footer, "footer-nav");
   const homeNav = createNewElementWithClass("li", footerNav, "footer-links");
   const homeNavLink = createNewElement("a", homeNav);
+  homeNavLink.classList.add("current-page");
   setAttributes(homeNavLink, "home");
   homeNavLink.innerHTML = `<svg
                     class="nav-icon"

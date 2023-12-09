@@ -21,6 +21,10 @@ export function renderProfile() {
   Header();
   Profile();
   Footer();
+  const navButtons = document.querySelectorAll('[data-js*="page"]');
+  const profileButton = document.querySelector('[data-js="profile-page"]');
+  navButtons.forEach((button) => button.classList.remove("current-page"));
+  profileButton.classList.add("current-page");
 }
 
 // render bookmarked
@@ -43,6 +47,10 @@ export function renderBookmarked() {
     BookmarkPlaceholder();
   }
   Footer();
+  const navButtons = document.querySelectorAll('[data-js*="page"]');
+  const bookmarkedButton = document.querySelector('[data-js="bookmark-page"]');
+  navButtons.forEach((button) => button.classList.remove("current-page"));
+  bookmarkedButton.classList.add("current-page");
 }
 
 renderMain();
