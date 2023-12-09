@@ -2,6 +2,7 @@ import { questionArray } from "../utils/QuestionArray.js";
 import { Header } from "../components/Header/Header.js";
 import { createCard, bookmarkedQuestions } from "../components/Card/Card.js";
 import { BookmarkPlaceholder } from "../components/BookmarksPlaceholder/BookmarksPlaceholder.js";
+import { AddQuestion } from "../components/AddQuestion/AddQuestion.js";
 import { Profile } from "../components/Profile/Profile.js";
 import { Footer } from "../components/Footer/Footer.js";
 
@@ -53,7 +54,18 @@ export function renderBookmarked() {
   bookmarkedButton.classList.add("current-page");
 }
 
-renderMain();
+export function renderAddQuestion() {
+  root.innerHTML = "";
+  Header();
+  AddQuestion();
+  Footer();
+  const navButtons = document.querySelectorAll('[data-js*="page"]');
+  const profileButton = document.querySelector('[data-js="profile-page"]');
+  navButtons.forEach((button) => button.classList.remove("current-page"));
+  profileButton.classList.add("current-page");
+}
+
+renderAddQuestion();
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
