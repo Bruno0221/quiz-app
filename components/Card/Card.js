@@ -4,33 +4,29 @@ import { toggleNextSibling } from "../../utils/ToggleNextSibling.js";
 
 export let bookmarkedQuestions = [];
 
-export function createCard(singleCard) {
-  const cardQuestion = singleCard.question;
-  const cardAnswer = singleCard.answer;
-  const cardID = singleCard.id;
-
+export function createCard({ question, answer, id, tags }) {
   const main = document.querySelector("main");
   const newCard = createNewElement("article", main, "question-container");
 
   const newInput = createNewElement("input", newCard, "bookmark-checkbox");
   newInput.classList.add("hidden");
   newInput.type = "checkbox";
-  newInput.id = "bookmark-checkbox" + cardID;
-  newInput.setAttribute("data-js", "bookmark-checkbox" + cardID);
+  newInput.id = "bookmark-checkbox" + id;
+  newInput.setAttribute("data-js", "bookmark-checkbox" + id);
 
   // move id of bookmarked question into an array
   newInput.addEventListener("click", () => {
     if (newInput.checked === true) {
-      bookmarkedQuestions.push(cardID);
+      bookmarkedQuestions.push(id);
     } else {
       bookmarkedQuestions = bookmarkedQuestions.filter(
-        (bookmark) => bookmark !== cardID
+        (bookmark) => bookmark !== id
       );
     }
   });
 
   const newLabel = createNewElement("label", newCard);
-  newLabel.setAttribute("for", "bookmark-checkbox" + cardID);
+  newLabel.setAttribute("for", "bookmark-checkbox" + id);
   newLabel.innerHTML = `<svg
     class="bookmark"
                               aria-label=" Clickable Bookmark Icon"
@@ -43,7 +39,7 @@ export function createCard(singleCard) {
                               d="M19.875 23.25h-1.652l-6.222-5.382-6.213 5.382h-1.663v-22.5h15.75zM5.625 2.25v19.156l6.375-5.522 6.375 5.514v-19.149z"
                           ></path>`;
 
-  const newQuestion = createNewElement("h2", newCard, "question", cardQuestion);
+  const newQuestion = createNewElement("h2", newCard, "question", question);
   newQuestion.setAttribute("data-js", "questions");
 
   const newButton = createNewElement(
@@ -59,7 +55,7 @@ export function createCard(singleCard) {
     toggleNextSibling(newButton);
   });
 
-  const newAnswer = createNewElement("p", newCard, "answer", cardAnswer);
+  const newAnswer = createNewElement("p", newCard, "answer", answer);
   newAnswer.classList.add("hidden");
   newAnswer.setAttribute("data-js", "answers");
   newAnswer.setAttribute("aria-hidden", "true");
@@ -70,7 +66,7 @@ export function createCard(singleCard) {
 
   const tagParent = newCard.querySelector('[data-js="tags"]');
 
-  singleCard.tags.forEach((tag) => {
+  tags.forEach((tag) => {
     createNewElement("li", tagParent, "tag", "#" + tag);
   });
 }
