@@ -14,6 +14,11 @@ export function createCard({ question, answer, id, tags }) {
   newInput.id = "bookmark-checkbox" + id;
   newInput.setAttribute("data-js", "bookmark-checkbox" + id);
 
+  //check if question is already bookmarked
+  if (bookmarkedQuestions.includes(id)) {
+    newInput.checked = true;
+  }
+
   // move id of bookmarked question into an array
   newInput.addEventListener("click", () => {
     if (newInput.checked === true) {
