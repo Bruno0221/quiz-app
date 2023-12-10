@@ -1,0 +1,12 @@
+.new-question-form {
+  padding: 0.5rem;
+}
+
+.new-question-form textarea {
+  resize: none;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
