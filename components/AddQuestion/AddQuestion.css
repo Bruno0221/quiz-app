@@ -7,12 +7,6 @@
 }
 
 .input-container {
-  padding: 0.25rem;
-  position: relative;
-}
-
-.form-label {
-  position: absolute;
-  left: 0;
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column-reverse;
 }
