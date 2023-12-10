@@ -1,14 +1,12 @@
 import {
   createNewElementWithClass,
-  createNewElement,
   createNewElementWithClassAndContent,
 } from "../../utils/CreateNewElements.js";
-import { createCard } from "../Card/Card.js";
 import { questionArray } from "../../utils/QuestionArray.js";
 
 // Add New Question
-export function AddQuestion() {
-  const main = document.querySelector("main");
+export function AddQuestion(parent) {
+  const main = parent;
   const container = createNewElementWithClass(
     "article",
     main,
@@ -20,6 +18,7 @@ export function AddQuestion() {
     "new-question-form"
   );
   form.setAttribute("data-js", "new-question-form");
+  form.id = "add-question-form";
 
   //New Question
   const questionContainer = createNewElementWithClass(
@@ -81,15 +80,7 @@ export function AddQuestion() {
   );
   tagLabel.setAttribute("for", "tag");
 
-  const submitButton = createNewElement("input", form);
-  submitButton.type = "submit";
-  submitButton.value = "Create New Question";
-  submitButton.setAttribute("data-js", "new-question-button");
-
   const questionForm = document.querySelector('[data-js="new-question-form"]');
-  const questionFormButton = document.querySelector(
-    '[data-js="new-question-button"]'
-  );
 
   questionForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -102,7 +93,6 @@ export function AddQuestion() {
       tags: [data.tag],
     };
     questionArray.push(newQuestion);
-    console.log(questionArray);
   });
 }
 

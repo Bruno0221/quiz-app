@@ -65,7 +65,7 @@ export function renderAddQuestion() {
   profileButton.classList.add("current-page");
 }
 
-renderAddQuestion();
+renderProfile();
 
 // // Add New Question
 // const questionForm = document.querySelector('[data-js="new-question-form"]');
