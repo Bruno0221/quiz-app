@@ -65,20 +65,4 @@ export function renderAddQuestion() {
   profileButton.classList.add("current-page");
 }
 
-renderProfile();
-
-// // Add New Question
-// const questionForm = document.querySelector('[data-js="new-question-form"]');
-// const questionFormButton = document.querySelector(
-//   '[data-js="new-question-button"]'
-// );
-// console.log(questionFormButton);
-
-// questionForm.addEventListener("click", (event) => {
-//   event.preventDefault();
-//   console.log(event.target);
-
-//   const formData = new FormData(event.target);
-//   const data = Object.fromEntries(formData);
-//   console.log(data);
-// });
+renderMain();
