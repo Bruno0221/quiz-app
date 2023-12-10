@@ -1,0 +1,18 @@
+.new-question-form {
+  padding: 2rem;
+}
+
+.new-question-form textarea {
+  resize: none;
+}
+
+.input-container {
+  padding: 0.25rem;
+  position: relative;
+}
+
+.form-label {
+  position: absolute;
+  left: 0;
+  padding: 0.5rem;
+}

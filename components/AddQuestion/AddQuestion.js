@@ -3,6 +3,8 @@ import {
   createNewElement,
   createNewElementWithClassAndContent,
 } from "../../utils/CreateNewElements.js";
+import { createCard } from "../Card/Card.js";
+import { questionArray } from "../../utils/QuestionArray.js";
 
 // Add New Question
 export function AddQuestion() {
@@ -12,37 +14,72 @@ export function AddQuestion() {
     main,
     "question-container"
   );
-  const form = createNewElement("form", container);
+  const form = createNewElementWithClass(
+    "form",
+    container,
+    "new-question-form"
+  );
   form.setAttribute("data-js", "new-question-form");
+
+  //New Question
+  const questionContainer = createNewElementWithClass(
+    "div",
+    form,
+    "input-container"
+  );
+  const questionInput = createNewElementWithClass(
+    "textarea",
+    questionContainer,
+    "form-input"
+  );
+  setTextareaAttributes(questionInput, "question", "question", 3, 25);
   const questionLabel = createNewElementWithClassAndContent(
     "label",
-    form,
+    questionContainer,
     "form-label",
     "New Question:"
   );
-  questionLabel.setAttribute("for", "new-question");
-  const questionInput = createNewElementWithClass("input", form, "form-input");
-  setInputAttributes(questionInput, "new-question", "text", "new-question");
+  questionLabel.setAttribute("for", "question");
 
+  // New Answer
+  const answerContainer = createNewElementWithClass(
+    "div",
+    form,
+    "input-container"
+  );
+  const answerInput = createNewElementWithClass(
+    "textarea",
+    answerContainer,
+    "form-input"
+  );
+  setTextareaAttributes(answerInput, "answer", "answer", 3, 25);
   const answerLabel = createNewElementWithClassAndContent(
     "label",
-    form,
+    answerContainer,
     "form-label",
     "New Answer:"
   );
-  answerLabel.setAttribute("for", "new-answer");
-  const answerInput = createNewElementWithClass("input", form, "form-input");
-  setInputAttributes(answerInput, "new-answer", "text", "new-answer");
+  answerLabel.setAttribute("for", "answer");
 
+  //New Tag
+  const tagContainer = createNewElementWithClass(
+    "div",
+    form,
+    "input-container"
+  );
+  const tagInput = createNewElementWithClass(
+    "input",
+    tagContainer,
+    "form-input"
+  );
+  setInputAttributes(tagInput, "tag", "text", "tag");
   const tagLabel = createNewElementWithClassAndContent(
     "label",
-    form,
+    tagContainer,
     "form-label",
     "New Tag:"
   );
-  tagLabel.setAttribute("for", "new-tag");
-  const tagInput = createNewElementWithClass("input", form, "form-input");
-  setInputAttributes(tagInput, "new-tag", "text", "new-tag");
+  tagLabel.setAttribute("for", "tag");
 
   const submitButton = createNewElement("input", form);
   submitButton.type = "submit";
@@ -53,15 +90,19 @@ export function AddQuestion() {
   const questionFormButton = document.querySelector(
     '[data-js="new-question-button"]'
   );
-  console.log(questionForm);
 
-  questionForm.addEventListener("click", (event) => {
+  questionForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log(event.target);
-
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
+    const newQuestion = {
+      id: questionArray.length,
+      question: data.question,
+      answer: data.answer,
+      tags: [data.tag],
+    };
+    questionArray.push(newQuestion);
+    console.log(questionArray);
   });
 }
 
@@ -69,4 +110,11 @@ function setInputAttributes(element, id, type, name) {
   element.id = id;
   element.type = type;
   element.name = name;
+}
+
+function setTextareaAttributes(element, id, name, rows, cols) {
+  element.id = id;
+  element.name = name;
+  element.rows = rows;
+  element.cols = cols;
 }
